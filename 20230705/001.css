@@ -1,0 +1,5 @@
+/* import보다 현 페이지에 있는 코드가 우선 */
+@import url(./css/002.css);
+body {
+  background-color: seagreen;
+}

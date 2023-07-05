@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      /* 자손(하위) 선택자 넷,다섯,여섯 */
+      /* section p {
+        border: 2px solid skyblue;
+      } */
+
+      /* .sect .text {
+        border: 2px solid skyblue;
+      } */
+
+      /* 자식 선택자(직계자손) 다섯,여섯 */
+      /* section > p {
+        border: 2px solid seagreen;
+      } */
+
+      /* 인접 형제 선택자 일곱 */
+      /* section + p {
+        background: pink;
+      } */
+
+      section {
+        color: red;
+        border: 2px solid salmon;
+        width: 100px;
+        box-sizing: border-box;
+      }
+
+      /* 자식이 부모에게 영향을 받음 자손은 관계 없음*/
+      button {
+        width: inherit;
+        border: inherit;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <p>하나</p>
+    <p>둘</p>
+    <p>셋</p>
+
+    <section class="sect">
+      <div>
+        <p class="text">넷</p>
+      </div>
+      <p class="text">다섯</p>
+      <p class="text">여섯</p>
+      <button type="button">버튼</button>
+    </section>
+
+    <p class="여기도">일곱</p>
+    <p>여덟</p>
+    <p>이홉</p>
+  </body>
+</html>
