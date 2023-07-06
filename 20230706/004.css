@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap");
+
+p {
+  font-family: "Bacasime Antique", serif;
+  font-size: 80px;
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-thickness: 20px;
+  text-underline-offset: 20px;
+  line-height: 120px;
+}
+
+p::first-letter {
+  text-transform: uppercase;
+}
