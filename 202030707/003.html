@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블록/인라인</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div,
+      span {
+        border: 2px solid salmon;
+        padding: 20px;
+
+        /* 블럭만 */
+        width: 200px;
+        height: 50px;
+
+        /* margin: 인라인 요소는 상하적용 안됨 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- span안에 div 쓰는 것을 선호하지 않음 -->
+    <!-- 단 a태그는 가능 -->
+    <div>안녕하세요</div>
+    <div>안녕하세요</div>
+    <div>안녕하세요</div>
+    <span>안녕하세요</span><span>안녕하세요</span><span>안녕하세요</span>
+  </body>
+</html>

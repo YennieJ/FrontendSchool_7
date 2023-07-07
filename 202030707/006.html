@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>width</title>
+    <style>
+      p {
+        background: pink;
+      }
+
+      .max-content {
+        width: max-content;
+      }
+
+      .min-content {
+        width: min-content;
+      }
+
+      .fit-content {
+        width: fit-content;
+      }
+
+      .parent {
+        width: 500px;
+        background: gray;
+      }
+
+      /* .parent p {
+        width: 200px;
+        margin: auto;
+      }
+
+      .parent p {
+        width: 200px;
+        margin: auto 0 auto auto;
+      } */
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi pariatur
+      architecto amet eius rerum esse aut debitis, saepe numquam sequi,
+      doloremque inventore incidunt maxime? Similique dolorum ipsam cum
+      laboriosam ut!
+    </p>
+    <p class="max-content">Lorem ipsum dolor sit.</p>
+    <p class="max-content">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat dolores
+      alias facere aliquid, vel tempore numquam assumenda? Aut inventore
+      voluptatibus, exercitationem libero voluptas dignissimos maxime,
+      temporibus, dolor blanditiis perspiciatis numquam.
+    </p>
+    <p class="min-content">Lorem ipsum dolor sit amet consectetur.</p>
+    <p class="min-content">한글로 작성하면요?</p>
+    <p class="fit-content">Lorem ipsum dolor sit amet.</p>
+    <p class="fit-content">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, omnis
+      iste aliquam eos deleniti dolores sint cum suscipit facilis laborum,
+      commodi ipsa consectetur eveniet impedit odio. Corrupti culpa nemo magnam?
+    </p>
+    <div class="parent">
+      <p>Lorem ipsum dolor sit.</p>
+    </div>
+  </body>
+</html>
