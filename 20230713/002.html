@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 함수</title>
+    <style>
+      div {
+        background-color: skyblue;
+        width: calc(100% - 10em);
+      }
+
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        /* float 썻을 때 */
+        float: left;
+        background-color: gold;
+        /* 100%에서 마진 n개값을 뺀 것을 m(여기선 li)개로 나눔*/
+        width: calc((100% - (20px * 3)) / 4);
+      }
+      li:not(:first-child) {
+        margin-left: 20px;
+      }
+      li:nth-child(even) {
+        background-color: seagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Hello</div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </body>
+</html>

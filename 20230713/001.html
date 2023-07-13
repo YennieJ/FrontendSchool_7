@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 변수</title>
+    <style>
+      :root {
+        --main-color: royalblue;
+        --pane-padding: 0.5em 2em;
+        --border-radius: 0.4em;
+      }
+      /* 지역 변수 설정 */
+      .dark {
+        --bg: #000;
+      }
+      .light {
+        --bg: #eee;
+      }
+
+      section {
+        /* 지역 변수 적용 */
+        background-color: var(--bg);
+
+        --color2: red;
+      }
+
+      button {
+        color: var(--main-color, blue);
+        border-color: var(--main-color, blue);
+        padding: var(--pane-padding);
+
+        /* section안에 있는 버튼만 */
+        border-bottom: 5px solid var(--color2);
+      }
+
+      p {
+        color: var(--main-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="light">
+      <section>
+        <button type="button">BUTTON</button>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident,
+          aliquid. Obcaecati alias commodi nobis rerum tempora? Distinctio
+          maxime temporibus suscipit eius. Perferendis totam nostrum consequatur
+          nulla itaque porro expedita accusamus.
+        </p>
+      </section>
+    </div>
+    <div class="dark">
+      <section>
+        <button type="button">BUTTON</button>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident,
+          aliquid. Obcaecati alias commodi nobis rerum tempora? Distinctio
+          maxime temporibus suscipit eius. Perferendis totam nostrum consequatur
+          nulla itaque porro expedita accusamus.
+        </p>
+      </section>
+    </div>
+    <button type="button">BUTTON</button>
+  </body>
+</html>
