@@ -1,0 +1,29 @@
+/* 선택자 = selector */
+/* div = type selector (유형 선택자) */
+/* selectoer {
+  property : value
+  */
+/* all property have initial value */
+div {
+  background-color: orange;
+  /* 마진,패딩,보더값을 고려해서 부모 너비를 계산함 */
+  /* 100%일때 box-sizing: border-box일 경우 마진의 영향을 받음;
+   */
+  width: auto;
+}
+
+/* display 초기값은 inline이다.
+하지만 div같은 경우는 그룹핑 목적이기 때문에 브라우저(크롬)가  판단해서  block으로 처리한다. 
+ */
+
+/* div이면서 header div.header */
+
+/* * :  universal selector */
+
+/* 
+브라우저야 뭐하냐 자동으로 좀 해주라 부탁~
+=> font-size: unset;
+어 이거 상속되는 애네? inherit
+=> margin: unset;
+어 얘는 상속 안되는데? initial
+ */
