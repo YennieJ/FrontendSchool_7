@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid ez</title>
+    <style>
+      .container {
+        display: grid;
+        width: 600px;
+        height: 600px;
+        grid-gap: 10px;
+        grid-template-areas:
+          "header header header"
+          "section section aside"
+          "footer footer footer";
+      }
+      header {
+        background-color: skyblue;
+        grid-area: header;
+      }
+
+      section {
+        background-color: navy;
+        grid-area: section;
+      }
+
+      aside {
+        background-color: lime;
+        grid-area: aside;
+      }
+
+      footer {
+        background-color: salmon;
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>Header</header>
+      <section>Section</section>
+      <aside>Aside</aside>
+      <footer>Footer</footer>
+    </div>
+  </body>
+</html>
