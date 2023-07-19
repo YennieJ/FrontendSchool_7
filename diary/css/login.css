@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+body {
+  font-family: "Pretendard-Regular";
+  background-color: #fffaf0;
+}
+body,
+h1,
+h2 {
+  margin: 0;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+}
+img {
+  vertical-align: top;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 108px 23px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+.logo {
+  width: 156px;
+  aspect-ratio: 156/75;
+  background-image: url(../img/logo.svg);
+}
+.logo p {
+  display: none;
+}
+
+.signup {
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+}
+
+.signup img {
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.main img {
+  aspect-ratio: 250/120;
+}
+
+.main h2 {
+  font-family: "Pretendard-Bold";
+  font-size: 24px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.inner-text-deco {
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  height: 11px;
+  background-color: #ff4f6e;
+  opacity: 0.20000000298023224;
+}
+.textdeco {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff4f6e;
+}
+/* .inner-text-deco{
+  position: ;
+} */
+form {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 14px;
+  margin-bottom: 8px;
+
+  color: #29363d;
+}
+
+input {
+  width: 392px;
+  height: 48px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: 1px solid #677880;
+}
+button {
+  width: 392px;
+  padding: 14px 0 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #f4f5f5;
+  background-color: #29363d;
+}
