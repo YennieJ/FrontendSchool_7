@@ -1,0 +1,30 @@
+.wrapper {
+  /* background-color: orange; */
+  box-shadow: inset 0 0 20px red;
+
+  width: 800px;
+  margin: 100px auto;
+
+  text-align: center;
+}
+
+.fruit {
+  background-color: orangered;
+
+  display: inline-block;
+
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  line-height: 200px;
+}
+
+.lemon {
+  background-color: lemonchiffon;
+}
+.orange {
+  background-color: orange;
+}
+.jamong {
+  background-color: orangered;
+}

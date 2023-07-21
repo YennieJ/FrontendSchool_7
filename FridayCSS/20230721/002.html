@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frog</title>
+
+    <style>
+      body {
+        background-color: brown;
+      }
+      .playground {
+        width: 980px;
+        border: 10px solid maroon;
+        border-radius: 20px;
+        margin: 0 auto;
+
+        background-color: skyblue;
+
+        display: flex;
+      }
+
+      .frog {
+        margin: 10px;
+        border: 6px solid green;
+        border-radius: 10px;
+
+        color: lime;
+        font-size: 40px;
+        background-color: mediumseagreen;
+
+        /* width 와 flex-basis 둘 다 있다면 basis win */
+        /* width 가 있으면 min-width 상속 */
+        /* min-width:auto 일 때 flex-basis가 콘텐츠보다 작다면 콘텐츠가 부모를 넘어감 */
+
+        /* min-width: auto; 때문에 콘텐츠 크기지만 flex-basis가 0이 되긴해 */
+        /* flex-basis: 0; */
+
+        /* 아이템의 with같은 느낌 */
+        /* flex-basis: auto; */
+
+        /* 남은 여백을 콘텐츠에게 나눠주기  basis값에 더해짐! */
+        /* flex-grow: 1; */
+      }
+
+      /* margin으로 조절하기 */
+      /* .frog.covid {
+        background-color: orange;
+        margin: 10px auto;
+      }
+      .frog:nth-child(1) {
+        margin-left: auto;
+      }
+      .frog:nth-child(3) {
+        margin-right: auto;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="playground">
+      <div class="frog">Frog</div>
+      <div class="frog">Frog</div>
+      <div class="frog">Frog</div>
+
+      <!-- <div class="frog">
+        <img src="../mini/margin-auto/flexbox/frog/images/frog.png" alt="" />
+      </div>
+      <div class="frog covid">
+        <img
+          src="../mini/margin-auto/flexbox/frog/images/frog-disco.png"
+          alt=""
+        />
+      </div>
+      <div class="frog">
+        <img
+          src="../mini/margin-auto/flexbox/frog/images/frog-cry.png"
+          alt=""
+        />
+      </div>
+      <div class="frog">
+        <img src="../mini/margin-auto/flexbox/frog/images/frog.png" alt="" />
+      </div>
+      <div class="frog covid">
+        <img
+          src="../mini/margin-auto/flexbox/frog/images/frog-disco.png"
+          alt=""
+        />
+      </div>
+      <div class="frog">
+        <img
+          src="../mini/margin-auto/flexbox/frog/images/frog-cry.png"
+          alt=""
+        />
+      </div> -->
+    </div>
+  </body>
+</html>
