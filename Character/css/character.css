@@ -2,6 +2,37 @@ body {
   margin: 0;
 }
 
+.eyebrow-left {
+  position: absolute;
+  top: 30%;
+
+  left: 10%;
+
+  width: 120px;
+  height: 50px;
+
+  border-width: 5px 3px 0 0;
+  border-style: solid;
+  border-color: #416629;
+  border-radius: 0 50% 0 0;
+
+  transform: rotate(7deg) scalex(-1);
+}
+.eyebrow-right {
+  position: absolute;
+  top: 30%;
+  right: 10%;
+
+  width: 120px;
+  height: 50px;
+
+  border-width: 5px 3px 0 0;
+  border-style: solid;
+  border-color: #416629;
+  border-radius: 0 50% 0 0;
+
+  transform: rotate(-7deg);
+}
 .eye {
   position: relative;
 }
@@ -34,6 +65,35 @@ body {
   background-color: black;
 }
 
+.cheek-left {
+  width: 100px;
+  height: 50px;
+  background-color: #996d57;
+  border-radius: 50%;
+
+  filter: blur(25px);
+
+  position: absolute;
+  top: 60%;
+  left: 0;
+  transform: rotate(20deg);
+}
+
+.cheek-right {
+  width: 50px;
+  height: 40px;
+  background-color: #996d57;
+  border-radius: 50%;
+
+  filter: blur(20px);
+
+  position: absolute;
+  top: 65%;
+  right: 10%;
+  transform: rotate(-20deg);
+}
+
+/* 전체 박스  */
 .head {
   width: 646px;
   position: relative;
@@ -202,6 +262,7 @@ body {
   left: 38%;
 
   transform: rotate(12deg);
+  box-sizing: border-box;
 }
 
 .lip-up {
@@ -213,8 +274,6 @@ body {
   border-style: solid;
   border-color: #d28dbc;
   border-radius: 90% 90% 0 0;
-
-  box-sizing: border-box;
 
   background-color: #3b1419;
 
@@ -234,7 +293,6 @@ body {
   width: 55px;
   height: 10px;
   margin: 0 auto;
-  box-sizing: border-box;
 
   background-color: #d28dbc;
   border-radius: 50% 80% 50% 50%;
