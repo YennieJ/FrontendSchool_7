@@ -5,56 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <style>
-      .hair {
-        width: 646px;
-        position: relative;
-        border: 10px solid black;
-        /* border: 1px solid red;
-        background-color: red; */
-        /* width: 647px;
-        height: 600px; */
-      }
-      img {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 530/400;
-        /* background-color: red; */
-        z-index: 10;
-        vertical-align: top;
-        border: 1px solid red;
-      }
 
-      .face {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-42%, -57%);
-        filter: drop-shadow(-10px 5px 10px #67b278);
-      }
-    </style>
+    <link rel="stylesheet" href="./css/character.css" />
   </head>
   <body>
     <div>
-      <div class="hair">
-        <img src="./img/3.svg" />
-        <svg
-          class="face"
-          xmlns="http://www.w3.org/2000/svg"
-          width="377"
-          height="327"
-          viewBox="0 0 387 337"
-          fill="none"
-        >
-          <path
-            d="M114.991 36.4161C132.807 22.9487 153.198 13.2802 174.9 8.00899L185.181 5.5119C293.523 -20.8026 395.78 66.8219 386.375 177.916L385.262 191.062C381.284 238.06 355.334 280.414 315.27 305.302V305.302C298.587 315.666 280.024 322.636 260.644 325.814L210.068 334.109C180.589 338.943 150.348 335.596 122.639 324.432L81.3194 307.783C21.4787 283.672 -11.4943 219.197 3.98527 156.566V156.566C11.1112 127.734 27.9293 102.227 51.6217 84.3175L114.991 36.4161Z"
-            fill="#B0D27C"
-          />
-        </svg>
-      </div>
-      <div class="eyes">
-        <div class="left eye"></div>
-        <div class="right eye"></div>
+      <div class="head">
+        <img src="./img/3.svg" class="hair" />
+        <div class="face">
+          <svg
+            class="skin"
+            xmlns="http://www.w3.org/2000/svg"
+            width="377"
+            height="327"
+            viewBox="0 0 387 337"
+            fill="none"
+          >
+            <path
+              d="M114.991 36.4161C132.807 22.9487 153.198 13.2802 174.9 8.00899L185.181 5.5119C293.523 -20.8026 395.78 66.8219 386.375 177.916L385.262 191.062C381.284 238.06 355.334 280.414 315.27 305.302V305.302C298.587 315.666 280.024 322.636 260.644 325.814L210.068 334.109C180.589 338.943 150.348 335.596 122.639 324.432L81.3194 307.783C21.4787 283.672 -11.4943 219.197 3.98527 156.566V156.566C11.1112 127.734 27.9293 102.227 51.6217 84.3175L114.991 36.4161Z"
+              fill="#B0D27C"
+            />
+          </svg>
+          <div class="nose"></div>
+          <div class="mouth-box">
+            <div class="lip-up">
+              <div class="tooth"></div>
+              <div class="tooth"></div>
+            </div>
+            <div class="lip-down"></div>
+          </div>
+        </div>
+        <div class="eyes-box">
+          <div class="eye">
+            <div class="eyelash eyelash-left">
+              <div></div>
+              <div></div>
+            </div>
+            <div class="eye-base eye-base-left">
+              <div class="eyeline-base eyeline-left"></div>
+              <div class="green-eye-left">
+                <div class="green-eye">
+                  <div class="black-eye"></div>
+                  <div class="eye-deco"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="eye">
+            <div class="eyelash eyelash-right">
+              <div></div>
+              <div></div>
+            </div>
+            <div class="eye-base eye-base-right">
+              <div class="eyeline-base eyeline-right"></div>
+              <div class="green-eye-right">
+                <div class="green-eye">
+                  <div class="black-eye"></div>
+                  <div class="eye-deco"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
