@@ -1,274 +1,155 @@
 body {
   margin: 0;
-}
-
-.eyebrow-left {
-  position: absolute;
-  top: 30%;
-
-  left: 10%;
-
-  width: 120px;
-  height: 50px;
-
-  border-width: 5px 3px 0 0;
-  border-style: solid;
-  border-color: #416629;
-  border-radius: 0 50% 0 0;
-
-  transform: rotate(7deg) scalex(-1);
-}
-.eyebrow-right {
-  position: absolute;
-  top: 30%;
-  right: 10%;
-
-  width: 120px;
-  height: 50px;
-
-  border-width: 5px 3px 0 0;
-  border-style: solid;
-  border-color: #416629;
-  border-radius: 0 50% 0 0;
-
-  transform: rotate(-7deg);
-}
-.eye {
-  position: relative;
-}
-
-.eyelash-left {
-  position: absolute;
-  top: -18px;
-  left: -15px;
-  z-index: 2;
-  transform: skew(124deg, 239deg) scalex(-1);
-}
-
-.eyelash-right {
-  position: absolute;
-
-  top: -13px;
-  right: -13px;
-
-  z-index: 2;
-
-  transform: skew(53deg, 305deg);
-}
-
-.eyelash > div {
-  width: 20px;
-  height: 7px;
-
-  border-radius: 0 0 100% 0;
-  margin-bottom: 5px;
-  background-color: black;
-}
-
-.cheek-left {
-  width: 100px;
-  height: 50px;
-  background-color: #996d57;
-  border-radius: 50%;
-
-  filter: blur(25px);
-
-  position: absolute;
-  top: 60%;
-  left: 0;
-  transform: rotate(20deg);
-}
-
-.cheek-right {
-  width: 50px;
-  height: 40px;
-  background-color: #996d57;
-  border-radius: 50%;
-
-  filter: blur(20px);
-
-  position: absolute;
-  top: 65%;
-  right: 10%;
-  transform: rotate(-20deg);
+  box-sizing: border-box;
 }
 
 /* 전체 박스  */
 .head {
-  width: 646px;
   position: relative;
 
+  width: 646px;
   margin: 100px auto;
+
   border: 10px solid black;
 }
+
+/* 머리 이미지 , .face보다 상위 */
 .hair {
   position: relative;
+
   width: 100%;
+
   aspect-ratio: 530/400;
-  z-index: 1;
   vertical-align: top;
+
+  z-index: 1;
 }
 
-.face {
+/* 전체 박스를 기준으로 */
+.skin {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-43%, -56%);
+
   filter: drop-shadow(2px 3px 5px #67b278);
 }
 
-.skin {
-  position: relative;
-}
-.eyes-box {
+/* 눈썹 */
+.eyebrows-box {
   position: absolute;
-  top: 40%;
-  left: 35%;
-  width: 250px;
+  top: 30%;
+  left: 10%;
 
   display: flex;
   justify-content: space-between;
+
+  width: 80%;
 }
+.eyebrow {
+  display: inline-block;
 
-.eye-base {
-  width: 100px;
-  height: 80px;
-
-  border: 1px solid #51783d;
-
-  background-color: #e2e4d7;
-
-  position: relative;
-
-  overflow: hidden;
-}
-
-.eyeline-base {
-  height: 80px;
-
-  border-width: 5px 0 0 0;
-  border-style: solid;
-  border-color: #1b2719;
-
-  position: relative;
-  z-index: 1;
-}
-.eyeline-left {
-  border-radius: 20% 60% 60% 90%;
-}
-
-.eyeline-right {
-  border-radius: 45% 29% 50% 50%;
-}
-
-.eye-base.eye-base-left {
-  height: 70px;
-  border-radius: 40% 70% 50% 90%;
-
-  box-shadow: -2px -3px 5px #996d57, -3px 4px 0 #579545, -5px 8px 10px #7fb860;
-}
-
-.eye-base.eye-base-right {
-  border-radius: 50% 30% 50% 50%;
-
-  box-shadow: 2px -3px 5px #996d57, 3px 4px 0 #579545, 5px 8px 10px #7fb860;
-}
-
-.green-eye-left {
-  position: absolute;
-  top: -20%;
-  right: 0;
-}
-
-.green-eye-right {
-  position: absolute;
-  top: -20%;
-  left: 20%;
-}
-
-.green-eye {
-  width: 60px;
-  height: 55px;
-  border: 1px solid #01020160;
-  border-radius: 50%;
-  background-color: #166837;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-}
-
-.black-eye {
-  width: 33px;
-  height: 30px;
-  border-radius: 50%;
-
-  background-color: #010005;
-}
-
-.eye-deco {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-
-  background-color: #f7ffeb;
-
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-
-  filter: blur(1px);
-}
-
-.nose {
-  width: 16px;
-  height: 80px;
-
+  width: 120px;
   height: 50px;
-  background-color: #83b64f;
-  border-radius: 8px;
+
+  border-width: 5px 3px 0 0;
+  border-style: solid;
+  border-color: #416629;
+  border-radius: 0 50% 0 0;
+}
+.eyebrow.left {
+  transform: rotate(7deg) scalex(-1);
+}
+.eyebrow.right {
+  transform: rotate(-7deg);
+}
+
+/* 코 */
+.nose {
   position: absolute;
   top: 63%;
   left: 47%;
+
+  width: 16px;
+  height: 50px;
+
+  border-radius: 8px;
+
+  background-color: #83b64f;
+
   transform: rotate(-75deg);
 }
-
 .nose:after {
   content: "";
-  background-color: #83b64f;
+
+  position: absolute;
+  top: 5px;
+  left: -12px;
 
   width: 40px;
   height: 40px;
+  border-top: 1px solid #6a9e3c;
   border-radius: 9.6px;
-  position: absolute;
 
-  top: 5px;
-  left: -12px;
+  background-color: #83b64f;
+
   transform: rotate(45deg);
 
   clip-path: polygon(0% 0%, 100% 100%, 100% 0%);
-
-  border-top: 1px solid #6a9e3c;
 }
 
-.mouth-box {
-  width: 60px;
-  height: 60px;
+/* 볼터치 */
+.cheek-left {
+  position: absolute;
+  top: 60%;
+  left: 0;
 
+  width: 100px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  background-color: #996d57;
+
+  transform: rotate(20deg);
+
+  filter: blur(25px);
+}
+.cheek-right {
+  position: absolute;
+  top: 65%;
+  right: 10%;
+
+  width: 50px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background-color: #996d57;
+
+  transform: rotate(-20deg);
+
+  filter: blur(20px);
+}
+
+/* 입 */
+.mouth-box {
   position: absolute;
   top: 76%;
   left: 38%;
 
+  width: 60px;
+  height: 60px;
+
   transform: rotate(12deg);
-  box-sizing: border-box;
 }
 
 .lip-up {
+  display: flex;
+  justify-content: center;
+
   width: 55px;
   height: 40px;
-  margin: 0 auto;
 
   border-width: 5px 2px 0 2px;
   border-style: solid;
@@ -278,25 +159,165 @@ body {
   background-color: #3b1419;
 
   overflow: hidden;
-
-  display: flex;
-  justify-content: center;
 }
 
 .tooth {
   width: 100%;
   height: 20px;
+
   background-color: #efe9d3;
 }
 
 .lip-down {
-  width: 55px;
-  height: 10px;
-  margin: 0 auto;
+  position: relative;
+  top: -10%;
 
-  background-color: #d28dbc;
+  width: 58px;
+  height: 10px;
+
   border-radius: 50% 80% 50% 50%;
 
+  background-color: #d28dbc;
+}
+
+/* 속눈썹때문에 skin밖으로 뺌 */
+.eyes-box {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+
+  display: flex;
+  justify-content: space-between;
+
+  width: 250px;
+}
+
+.eye {
   position: relative;
-  top: -7%;
+}
+
+/* 속눈썹 */
+.eyelash {
+  position: absolute;
+
+  z-index: 2;
+}
+.eyelash.left {
+  top: -18px;
+  left: -15px;
+
+  transform: skew(124deg, 239deg) scalex(-1);
+}
+.eyelash.right {
+  top: -13px;
+  right: -13px;
+
+  transform: skew(53deg, 305deg);
+}
+.eyelash > div {
+  width: 20px;
+  height: 7px;
+  margin-bottom: 5px;
+
+  border-radius: 0 0 100% 0;
+
+  background-color: black;
+}
+
+/* 눈 */
+.eye-base {
+  position: relative;
+
+  width: 100px;
+
+  border: 1px solid #51783d;
+
+  background-color: #e2e4d7;
+
+  overflow: hidden;
+}
+.eye-base.left {
+  height: 70px;
+  border-radius: 40% 70% 50% 90%;
+
+  box-shadow: -2px -3px 5px #996d57, -3px 4px 0 #579545, -5px 8px 10px #7fb860;
+}
+.eye-base.right {
+  height: 80px;
+  border-radius: 50% 30% 50% 50%;
+
+  box-shadow: 2px -3px 5px #996d57, 3px 4px 0 #579545, 5px 8px 10px #7fb860;
+}
+
+/* 아이라인 */
+.eyeline {
+  position: relative;
+
+  height: 80px;
+
+  border-width: 5px 0 0 0;
+  border-style: solid;
+  border-color: #1b2719;
+
+  z-index: 1;
+}
+.eyeline.left {
+  border-radius: 20% 60% 60% 90%;
+}
+.eyeline.right {
+  border-radius: 45% 29% 50% 50%;
+}
+
+/* 눈 위치 */
+.eye-left {
+  position: absolute;
+  top: -20%;
+  right: 0;
+}
+.eye-right {
+  position: absolute;
+  top: -20%;
+  left: 20%;
+}
+
+/* 초록색 눈동자 */
+.green-eye {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 55px;
+
+  border: 2px solid #01020160;
+  border-radius: 50%;
+
+  background: radial-gradient(#44af79, #166837);
+}
+
+/* 검정색 눈동자 */
+.black-eye {
+  width: 33px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background-color: #010005;
+}
+
+/* 하얗색 눈동자 데코레이션 */
+.white-eye-deco {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+
+  background-color: #f7ffeb;
+
+  filter: blur(1px);
 }
