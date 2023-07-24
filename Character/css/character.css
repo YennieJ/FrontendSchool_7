@@ -184,7 +184,7 @@ body {
 
   z-index: 1;
 
-  animation: mouthMoving 2s ease infinite;
+  /* animation: mouthMoving 2s ease infinite; */
 }
 @keyframes mouthMoving {
   70% {
@@ -263,7 +263,7 @@ body {
 
   transform: rotate(58deg) scalex(-1);
 
-  animation: leftEyelashMoving 2s ease infinite;
+  /* animation: leftEyelashMoving 2s ease infinite; */
 }
 .eyelash.right {
   top: -24px;
@@ -271,7 +271,7 @@ body {
 
   transform: rotate(-58deg);
 
-  animation: rigthEyelashMoving 2s ease infinite;
+  /* animation: rigthEyelashMoving 2s ease infinite; */
 }
 .eyelash > div {
   width: 40px;
@@ -330,12 +330,12 @@ body {
   overflow: hidden;
 }
 .eye-base.left {
-  height: 70px;
+  /* height: 70px;
   border-radius: 40% 70% 50% 90%;
 
-  box-shadow: -2px -3px 5px #996d57, -3px 4px 0 #579545, -5px 8px 10px #7fb860;
+  box-shadow: -2px -3px 5px #996d57, -3px 4px 0 #579545, -5px 8px 10px #7fb860; */
 
-  animation: lefEyeMovig 2s ease infinite;
+  /* animation: lefEyeMovig 2s ease infinite; */
 }
 .eye-base.right {
   height: 80px;
@@ -343,7 +343,7 @@ body {
 
   box-shadow: 2px -3px 5px #996d57, 3px 4px 0 #579545, 5px 8px 10px #7fb860;
 
-  animation: rigthEyeMovig 2s ease infinite;
+  /* animation: rigthEyeMovig 2s ease infinite; */
 }
 
 /* 아이라인, 눈동자 */
@@ -367,14 +367,21 @@ body {
 
   z-index: 1;
 
-  animation: hidden 2s ease infinite;
+  /* animation: hidden 2s ease infinite; */
 }
 
-.eyeline.left,
+/* .eyeline.left,
 .close.left {
   height: 70px;
   border-radius: 40% 70% 50% 90%;
+  animation: temp 2s ease infinite;
 }
+
+@keyframes temp {
+  to {
+    height: 40px;
+  }
+} */
 
 .eyeline.right,
 .close.right {
@@ -397,7 +404,7 @@ body {
 
   z-index: 1;
 
-  animation: closeEyeline 2s ease infinite;
+  /* animation: closeEyeline 2s ease infinite; */
 }
 @keyframes closeEyeline {
   80% {
@@ -410,18 +417,18 @@ body {
 
 /* 눈 위치 */
 .eye-left {
-  position: absolute;
+  /* position: absolute;
   top: -20%;
-  right: 0;
+  right: 0; */
 
-  animation: hidden 2s infinite;
+  /* animation: hidden 2s infinite; */
 }
 .eye-right {
   position: absolute;
   top: -20%;
   left: 20%;
 
-  animation: hidden 2s infinite;
+  /* animation: hidden 2s infinite; */
 }
 
 /* 초록색 눈동자 */
@@ -464,4 +471,33 @@ body {
   background-color: #f7ffeb;
 
   filter: blur(1px);
+}
+
+.eye-base.left {
+  height: 50px;
+  border-radius: 40% 70% 50% 90%;
+
+  box-shadow: -2px -3px 5px #996d57, -3px 4px 0 #579545, -5px 8px 10px #7fb860;
+
+  /* animation: lefEyeMovig 2s ease infinite; */
+}
+.eye-left {
+  position: absolute;
+  top: -30%;
+  right: 0;
+
+  /* animation: hidden 2s infinite; */
+}
+
+.eyeline.left,
+.close.left {
+  height: 50px;
+  border-radius: 40% 70% 50% 90%;
+  /* animation: temp 2s ease infinite; */
+}
+
+@keyframes temp {
+  to {
+    height: 40px;
+  }
 }
