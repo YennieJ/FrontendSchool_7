@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-        <title>Position Mini Example</title>
-        <link rel="stylesheet" href="style.css">
-        <style>
-            body {
-                background-color: #666;
-            }
-            .grand-father {
-                background-color: #bbb;
-                width: 800px;
-                margin: 0 auto;
-                padding: 1px;
-            }
-            .father {
-                background-color: white;
-                width: 300px;
-                height: 200px;
-                margin: 50px auto;
-            }
-            .children {
-                width: 100px;
-                height: 100px;
-            }
-        </style>
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Position Mini Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: #666;
+      }
+      .grand-father {
+        background-color: #bbb;
+        width: 800px;
+        margin: 0 auto;
+        padding: 1px;
+      }
+      .father {
+        background-color: white;
+        width: 300px;
+        height: 200px;
+        margin: 50px auto;
+      }
+      .children {
+        width: 100px;
+        height: 100px;
 
-        <div class="grand-father">
-            <div class="father">
-                <img class="children" src="img.png">
-            </div>
-        </div>
-       
-	</body>
+        /* 시각적으로만 움직임 본인의 공간은 그대로임 */
+        transform: translateX(-50%);
+
+        position: relative;
+        left: -50px;
+
+        /* 공간 자체가 이동 */
+        margin-left: -50px;
+
+        /* 걍 absolute면 걍 그 요소 위에만 붕 뜸*/
+        /* 최소의 컨테이닝 블럭은 뷰포트!!!!! */
+      }
+
+      .pos {
+        position: absolute;
+        left: 0;
+        right: 0;
+        /* ^ 한줄차치 ^*/
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        top: 0;
+        bottom: 0;
+
+        /* all 0 === inset:0; */
+
+        /* 이것도 가운데 정렬인데 width,height는 필요없음 */
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grand-father">
+      <div class="father">
+        <img class="children" src="img.png" />
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,14 +1,36 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 body {
-    background-color: #111;
+  background-color: #111;
 }
 .cover {
-    background-color: #222;
-    color: white;
+  background-color: #222;
+  color: white;
+  height: 600px;
+
+  display: flex;
+  /* 이미지가 스트레치돼 */
+
+  flex-direction: column;
+  align-items: center;
+
+  /* option1 */
+  /* justify-content: center; */
 }
+
+/* option2 */
 .cover-logo {
+  margin-top: auto;
 }
-.cover-desciption {
+.cover-description {
+  margin-bottom: auto;
 }
+
+/* option3 캐릭터가 없을 때 */
+/* .cover::before,
+::after {
+  content: "";
+
+  margin: auto;
+} */

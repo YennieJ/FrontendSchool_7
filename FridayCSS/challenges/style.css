@@ -1,46 +1,206 @@
-h1,
-h2,
+/* Reset CSS */
+body,
 ul,
 p {
   margin: unset;
   padding: unset;
 }
-
+li {
+  list-style-type: none;
+}
 h1,
-h2,
-p {
+h2 {
   font-size: unset;
   font-weight: unset;
+  margin: unset;
 }
 
-body {
-  color: #fff;
-  background-image: url(images/bg.png);
+a {
+  color: unset;
+  text-decoration: unset;
 }
 
 img {
+  max-width: 100%;
+  height: auto;
   vertical-align: top;
 }
-.container {
-  width: 300px;
+
+/* Variables */
+:root {
+  --header-height: 300px;
+  --footer-height: 60px;
+}
+
+/* Layouts */
+.wrapper {
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+.grid {
+  /* display: flex;
+  gap: 30px;
+  flex-wrap: wrap; */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.grid-item {
+  /* 컨텐츠 내용과 상관없이 같은 크기로 나눌때 */
+  /* flex-basis: 200px;
+  flex-grow: 1; */
+
+  /* wrap을 사용할때는 flex-basis값을 지정해주는것이 좋다. */
+  /* --------------------------------- */
+
+  /* 컨텐츠가 더 클 때 넘어가는 것을 방지함 */
+  min-width: 0;
+  /* --------------------------------- */
+
+  min-height: 200px;
+}
+
+/* Components */
+body {
+  background-image: url(images/bg.png);
+  /* 지정한 요소를 다 덮도록 배경 이미지를 확대/축소 initial=auto */
+  background-size: cover;
+  /* initial=scroll이 되지 않도록 */
+  background-attachment: fixed;
+  color: white;
+}
+
+.header {
+  height: var(--header-height);
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200px;
+  /*font-size:200px 일 때 실제 height: 240px why? line-height: normal font-family에 따라 유동적 */
+  /* line-height: 1.5; */
+  /* 400px */
+  /* text-align: center; */
+  /* ----------------------------------- */
+  font-family: "Lobster Two", cursive;
+  font-style: italic;
+  word-spacing: 0;
+
+  /* 줄바꿈 금지 */
+  white-space: nowrap;
+  position: relative;
+
+  overflow: hidden;
+
+  transition: word-spacing 0.4s, color 0.4s;
+
+  color: #555;
+}
+
+.header-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: 0 auto;
+  transition: transform 0.4s;
+  transform: translateY(80%);
+}
+
+.header:hover {
+  word-spacing: 300px;
+  color: #fff;
+}
+.header:hover .header-cover {
+  transform: translateY(40%);
+}
+.contents {
+  min-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+}
+
+.nav {
+  background-color: rgb(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 40px 0;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  /* 가운데 정렬 option1 */
+  /* text-align: center; */
+}
+.nav-menu {
+  /* 가운데 정렬 option1 */
+  /* display: inline-flex; */
+
+  /* 가운데 정렬 option2 */
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  /* --------------------------- */
+  padding: 0 20px;
+
+  border-radius: 30px;
+  border-top: 1px solid #999;
+  border-bottom: 2px solid #000;
+  box-shadow: inset 0 0 10px 3px rgb(0 0 0 / 0.4);
+  background-color: #555;
+}
+
+.nav-menu li a {
+  display: block;
+  padding: 20px;
+  color: #888;
+
+  transition: color 0.4s;
+}
+
+.nav-menu li a:hover {
+  color: #ccc;
+}
+
+.main {
+  padding: 40px 0;
+}
+
+.animal {
+  max-width: 300px;
+  margin: 0 auto;
+}
+.animal-cover {
+  display: block;
   margin: 0 auto;
 }
 
-.text-group {
-  font-family: Arial;
-  border-radius: 0px 0px 30px 30px;
-  border-bottom: 10px solid #46260e;
-  background: #9c6035;
-}
-.text-group h1 {
-  padding: 10px 0 10px 20px;
-  font-size: 36px;
-  font-weight: 700;
-}
-.text-group p {
-  height: 130px;
+.animal-contents {
+  background-color: #93572e;
+  background-image: url(./images/green.png);
+  background-repeat: repeat-x;
+  background-position: center top;
+  padding: 70px 20px 40px 20px;
 
-  padding: 0 20px 65px 20px;
-  color: #e8bc9c;
-  font-weight: 400;
+  border-radius: 10px 10px 30px 30px;
+  border-bottom: 4px solid rgb(0, 0, 0, 0.4);
+}
+.animal-contents h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.animal-contents p {
+  color: #e4c3c3;
+}
+.footer {
+  background-color: #222;
+  border-top: 2px solid #999;
+  padding: 20px 0;
+  text-align: center;
+
+  color: #999;
 }

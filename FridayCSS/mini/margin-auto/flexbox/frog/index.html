@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Flexing</title>
-        <style>
-            body {
-                background-color: brown;
-            }
-            .playground {
-                border: 10px solid maroon;
-                width: 980px;
-                margin: 0 auto;
-                border-radius: 30px;
-                background-color: skyblue;
-            }
-            .frog {
-                background-color: mediumseagreen;
-                color: lime;
-                font-size: 40px;
-                border: 6px solid green;
-                border-radius: 10px;
-            }
-        </style>
-    </head>
-    <body>
+  <head>
+    <title>Flexing</title>
+    <style>
+      body {
+        background-color: brown;
+        height: 100vh;
 
-        <div class="playground">
-            <div class="frog">Frog</div>
-        </div>
+        display: flex;
+      }
+      .playground {
+        border: 10px solid maroon;
+        width: 980px;
+        margin: auto;
+        border-radius: 30px;
+        background-color: skyblue;
 
-    </body>
+        display: flex;
+        /* 넘쳐흐를때 */
+        /* flex-wrap: wrap; */
+      }
+      .frog {
+        background-color: mediumseagreen;
+        color: lime;
+        font-size: 40px;
+        margin: 10px;
+        border: 6px solid green;
+        border-radius: 10px;
+
+        /* 아이템 width */
+        flex-basis: 200px;
+
+        /* 남는공간 공평하게 나누기*/
+        /* flex-grow: 1; */
+      }
+
+      /* justify-content: center; 없이 ----------------*/
+      /* .first {
+        margin-left: auto;
+      }
+      .last {
+        margin-right: auto;
+      }
+
+      .playground::before,
+      .playground::after {
+        content: "";
+        flex-grow: 1;
+      } */
+      /* ------------------------------------ */
+    </style>
+  </head>
+  <body>
+    <div class="playground">
+      <div class="frog first"><img src="./images/frog.png" alt="" /></div>
+      <div class="frog"><img src="./images/frog.png" alt="" /></div>
+      <div class="frog last"><img src="./images/frog.png" alt="" /></div>
+      <!-- <div class="frog"><img src="./images/frog.png" alt="" /></div>
+      <div class="frog"><img src="./images/frog.png" alt="" /></div>
+      <div class="frog"><img src="./images/frog.png" alt="" /></div>
+      <div class="frog"><img src="./images/frog.png" alt="" /></div> -->
+    </div>
+  </body>
 </html>
