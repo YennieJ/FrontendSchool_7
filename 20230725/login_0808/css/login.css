@@ -1,0 +1,113 @@
+button {
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 520px;
+
+  border: 1px solid #c4c4c4;
+}
+
+.login-group {
+}
+
+.login-box {
+  position: relative;
+}
+.social-login {
+  width: 472px;
+  padding: 15px 0;
+  margin-bottom: 10px;
+  border: 1px solid #767676;
+  border-radius: 5px;
+
+  color: #767676;
+}
+
+/* .google::before {
+  content: url(../imgs/Google__G__Logo\ 1.png);
+} */
+
+[class^="icon"]::before {
+  content: "";
+
+  position: absolute;
+  top: 11px;
+  left: 12px;
+
+  display: block;
+
+  width: 28px;
+  height: 28px;
+
+  background-image: url(../imgs/loginIcon_sprites.png);
+
+  border: 1px solid red;
+}
+/* .icon-google::before {
+  content: "";
+
+  position: absolute;
+  top: 11px;
+  left: 12px;
+
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-image: url(../imgs/loginIcon_sprites.png);
+
+  background-position: -10px -10px;
+} */
+
+[class^="icon"]::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url("images_login/icon_sprites_retina.png");
+  background-size: 117px 84px;
+}
+
+.link-sns-login.icon-facebook {
+  border: 1px solid #2d9cdb;
+}
+
+.link-sns-login.icon-naver {
+  border: 1px solid #00bf18;
+}
+
+.link-sns-login.icon-kakao {
+  border: 1px solid #f2c94c;
+}
+
+.icon-google::before {
+  width: 22px;
+  height: 22px;
+  background-position: -52px -10px;
+  /* background: url("images_login/icon_google.png") no-repeat; */
+}
+
+.icon-naver::before {
+  width: 22px;
+  height: 22px;
+  background-position: -10px -10px;
+  /* background: url("images_login/icon_naver.png") no-repeat; */
+}
+
+.icon-kakao::before {
+  width: 22px;
+  height: 22px;
+  background-position: -10px -52px;
+  /* background: url("images_login/icon_kakao.png") no-repeat; */
+}
+
+.icon-facebook::before {
+  height: 24px;
+  width: 13px;
+  background-position: -93px -10px;
+
+  /* background: url("images_login/icon_facebook.png") center no-repeat; */
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>checkbox</title>
+    <style>
+      .txt-hide {
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+
+        clip-path: inset(50%);
+
+        /* width,height 0px 은 왜 문제가 되는가??
+        스크린 리더는 존재하지 않는 것으로 판단하기 때문에 */
+      }
+
+      .labl-hold {
+        position: relative;
+      }
+
+      .labl-hold::before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+        vertical-align: -5px;
+
+        border: 1px solid black;
+      }
+
+      .labl-hold::after {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 20px;
+        width: 22px;
+        height: 22px;
+        background-image: url(./imgs/checkmark.png);
+        background-size: 22px;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      .inputHold:checked + .labl-hold::after {
+        left: 0;
+        opacity: 1;
+      }
+      .inputHold:focus-visible + .labl-hold::before {
+        outline: 2px solid black;
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="inputHold" class="inputHold txt-hide" />
+    <label for="inputHold" class="labl-hold">로그인상태유지</label>
+  </body>
+</html>
