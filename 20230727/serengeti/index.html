@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mbtitest</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="container">
+    <article class="start">
+      <h1 class="mt-5 text-center">나랑 꼭 닮은 세렝게티 동물은?</h1>
+      <button type="button" class="btn btn-primary mt-5" onclick="start()">
+        Test start
+      </button>
+    </article>
+    <article class="question">
+      <div
+        class="progress mt-5"
+        role="progressbar"
+        aria-label="Basic example"
+        aria-valuenow="25"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <div class="progress-bar" style="width: calc(100 / 12 * 1%)"></div>
+      </div>
+      <h2 class="text-center" id="title">Question</h2>
+      <input id="type" type="hidden" value="EI" />
+      <button id="A" type="button" class="btn btn-primary mt-5">
+        Test start
+      </button>
+      <button id="B" type="button" class="btn btn-primary mt-5">
+        Test start
+      </button>
+    </article>
+    <article class="result">
+      <img id="img" src="" alt="mola" />
+      <h2 id="animal">동물이름</h2>
+      <h3 id="explain">설명</h3>
+    </article>
+    <!-- input type=hidden: 값을 받아야하고 화면엔 나타내고 싶지 않을 때 -->
+    <input type="hidden" id="EI" value="0" />
+    <input type="hidden" id="SN" value="0" />
+    <input type="hidden" id="TF" value="0" />
+    <input type="hidden" id="JP" value="0" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // A와 B를 클릭했을 때 A점수만 매겨서 비교하기
+      //문제
+      let num = 1;
+      const q = {
+        1: { title: "Q1", type: "EI", A: "E", B: "I" },
+        2: { title: "Q2", type: "EI", A: "E", B: "I" },
+        3: { title: "Q3", type: "EI", A: "E", B: "I" },
+        4: { title: "Q4", type: "SN", A: "S", B: "N" },
+        5: { title: "Q5", type: "SN", A: "S", B: "N" },
+        6: { title: "Q6", type: "SN", A: "S", B: "N" },
+        7: { title: "Q7", type: "TF", A: "T", B: "F" },
+        8: { title: "Q8", type: "TF", A: "T", B: "F" },
+        9: { title: "Q9", type: "TF", A: "T", B: "F" },
+        10: { title: "Q10", type: "JP", A: "J", B: "P" },
+        11: { title: "Q11", type: "JP", A: "J", B: "P" },
+        12: { title: "Q12", type: "JP", A: "J", B: "P" },
+      };
+
+      //어떤 동물
+      const result = {
+        ESTJ: { animalImg: "lion", name: "lion", explain: "사자다" },
+        INFP: { animalImg: "cat", name: "cat", explain: "고양이다" },
+        ISFJ: { animalImg: "fox", name: "fox", explain: "나다" },
+      };
+
+      // 문제페이지로 넘어가기
+      function start() {
+        $(".start").hide();
+        $(".question").show();
+        next();
+      }
+      // buttonA click
+      $("#A").click(function () {
+        let type = $("#type").val(); //EI
+        let preValue = $("#" + type).val(); // #EI.val = 0
+        $("#" + type).val(parseInt(preValue) + 1);
+        next();
+      });
+
+      // buttonB click
+      $("#B").click(function () {
+        next();
+      });
+
+      // 다음문제로 넘어가기
+      function next() {
+        if (num === 13) {
+          $(".question").hide();
+          $(".result").show();
+
+          // mbti확인
+          let mbti = "";
+          //q[num]을 기준으로 input Id의 value가 2보다 크면  Avalue 작으면 Bvalue
+          $("#EI").val() < 2 ? (mbti += "I") : (mbti += "E");
+          $("#SN").val() < 2 ? (mbti += "N") : (mbti += "S");
+          $("#TF").val() < 2 ? (mbti += "F") : (mbti += "T");
+          $("#JP").val() < 2 ? (mbti += "P") : (mbti += "J");
+
+          //result결과
+          $("#img").attr("alt", result[mbti]["animalImg"]);
+          $("#animal").html(result[mbti]["name"]);
+          $("#explain").html(result[mbti]["explain"]);
+        } else {
+          $(".progress-bar").attr(
+            "style",
+            "width: calc(100 / 12 *" + num + "%)"
+          );
+          $("#title").html(q[num]["title"]); //h2=> q[v][Q1]
+          $("#type").val(q[num]["type"]); //input=> q[v][EI]
+          $("#A").html(q[num]["A"]); //buttonA=> q[v][E]
+          $("#B").html(q[num]["B"]); //buttonB=> q[v][I]
+          num++;
+        }
+      }
+    </script>
+  </body>
+</html>
