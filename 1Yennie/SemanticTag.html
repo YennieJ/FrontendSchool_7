@@ -1,0 +1,93 @@
+<!-- HTML버전을 알려주는 선언문 -->
+<!DOCTYPE html>
+<!-- --------------------- -->
+
+<html lang="ko-KR">
+  <!-- lang: 주요 언어 (lagnuagecode-COUNTRYCODE)
+            검색 엔진,스크린 리더,번역기능 제공에 영향을 줌 -->
+
+  <head>
+    <!-- 검색엔진에 영향을 끼치는 문서 정보
+    사용자에겐 title,favicon,viewport 정보 -->
+
+    <!-- <meta:어떤 목적을 위해 만들어진 데이터 name="데이터 정보 이름" content="실제 정보" /> -->
+    <meta charset="UTF-8" />
+    <!-- 전세계 언어 지원 -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 브라우저 호환성 -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 사용자의 width,height,scale 제어 -->
+    <!-- ----------------------------------------------------------------------- -->
+
+    <!-- Tap 제목(only text max="60") -->
+    <title>소제목 | 대제목</title>
+    <!-- --------------------------- -->
+
+    <!-- <link:현재 문서와 외부 리소스 관계 명시 relations="파일 속성" hreprt-references="경로"> -->
+    <link rel="stylesheet" href="" />
+    <!-- ---------------------------------------------------------------------------- -->
+  </head>
+
+  <body>
+    <!-- 시멘틱 태그를 사용하자! 개인적으로 생각하는 구조 -->
+
+    <header>
+      <!-- 문서 또는 섹션의 머리말 영역 -->
+      <h1>시멘틱 태그</h1>
+      <nav>
+        <!-- navigation bar -->
+        <ul>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 주요 컨텐츠(페이지 내에서 단 한번 사용) -->
+
+      <article>
+        <!-- 독립적, 재사용 가능 with 제목 -->
+        <section>
+          <!-- 하나의 요소에 목차와 같은 구획을 나눌 때 with 제목 -->
+        </section>
+      </article>
+
+      <!-- case1 -->
+      <article>
+        <h2>Cafe</h2>
+        <section>
+          <h3>coffee</h3>
+        </section>
+        <section>
+          <h3>dessert</h3>
+        </section>
+      </article>
+
+      <!-- case2 가능하지만 의미상 별로인듯 -->
+      <section>
+        <h2>News</h2>
+        <article>
+          <h3>weather forecast1</h3>
+        </article>
+        <article>
+          <h3>weather forecast2</h3>
+        </article>
+      </section>
+
+      <!-- 독립적이라면 article
+            적합한 의미를 찾기 힘들다면 section
+              디자인을 위해선 div -->
+    </main>
+
+    <aside>
+      <!-- 광고 -->
+    </aside>
+
+    <footer>
+      <!-- 페이지 작성자, 저작권 정보, 관련 문서 -->
+    </footer>
+  </body>
+</html>
