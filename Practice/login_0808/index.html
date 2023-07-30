@@ -4,55 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../common/reset.css" />
-    <link rel="stylesheet" href="./css/login.css" />
-    <title></title>
+
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <title>weniv</title>
+    <!-- <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    /> -->
+
+    <style></style>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <!-- <h1>로그인</h1> -->
-        <p>로그인 또는 회원가입</p>
-        <button type="button">X</button>
+    <main class="container">
+      <header class="header">
+        <!-- <h1 class="">weniv</h1> -->
+        <img src="./imgs/weniv-logo.svg" alt="" />
       </header>
-      <main>
-        <p>위니브에서 여러분의 궁금증을 해결하세요! :)</p>
-        <form action="">
-          <label for="id">아이디</label>
-          <input type="text" id="id" placeholder="아이디" />
-          <label for="password">비밀번호</label>
-          <input type="password" id="password" placeholder="비밀번호" />
-          <div>
-            <input type="checkbox" id="stateCheck" />
-            <label for="stateCheck">로그인 상태 유지</label>
-          </div>
-          <button type="submit">로그인</button>
-        </form>
-        <div>
-          <button type="button">회원가입</button>
-          <button type="button">아이디/비밀번호 찾기</button>
-        </div>
-      </main>
-      <section class="footer">
-        <!-- <h3>소셜서비스로 로그인</h3> -->
-        <p>또는</p>
-        <ul class="login-group">
-          <li class="login-box">
-            <button class="social-login icon-google">
-              구글 계정으로 로그인
-            </button>
-          </li>
-          <li>
-            <button class="social-login">페이스북 계정으로 로그인</button>
-          </li>
-          <li>
-            <button class="social-login">네이버 계정으로 로그인</button>
-          </li>
-          <li>
-            <button class="social-login">카카오톡 계정으로 로그인</button>
-          </li>
-        </ul>
-      </section>
-    </div>
+
+      <p class="text">위니브를 더 즐겁고 편리하게 이용하세요.</p>
+      <!-- 버튼으로 모달구현 할래? -->
+      <a href="./login.html" class="login-button">로그인</a>
+    </main>
   </body>
 </html>
