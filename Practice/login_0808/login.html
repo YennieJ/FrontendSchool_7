@@ -104,9 +104,11 @@
 
         if ($(".user-id").val() === "") {
           $(".warnning-id").show();
+          $(".user-id").attr("style", "border:2px solid #F4492E");
         } else {
           $(".warnning-id").hide();
           $(".warnning-user").show();
+          $(".user-id").attr("style", "border:1px solid #c4c4c4");
           $(".login-input-group").attr("style", "margin-bottom:12px");
         }
       });
