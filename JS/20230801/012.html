@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String</title>
+  </head>
+  <body>
+    <script>
+      let str = "Hello World";
+
+      // slice(시작인덱스, 종료인덱스)
+      // 종료 인덱스 바로 직전(-1)까지 잘라냅니다.
+      console.log(str.slice(0, 5)); // Hello
+      console.log(str.slice(0, 7)); // Hello W
+      console.log(str.slice(7, 3)); // error
+      console.log(str.slice(2)); // llo World
+      console.log(str.slice(-6, -1)); //  Worl
+
+      // substring(시작인덱스,종료인덱스)
+      // 종료 인덱스 바로 직전(-1)까지 잘라냅니다.
+      console.log(str.substring(0, 5)); // Hello
+      console.log(str.substring(0, 7)); // Hello W
+      console.log(str.slice(7, 3)); // error
+      console.log(str.slice(2)); // llo World
+      console.log(str.slice(-6, -1)); //  Worl
+
+      // substring과 slice의 차이점
+      // 1. 음수 취급
+      // slice는 음수를 취급하지만 substring은 양수로 취급합니다.
+      let test = "hello world";
+      console.log(test.slice(-5, 9));
+      console.log(test.slice(6, 9));
+      console.log(test.substring(-5, 9));
+      console.log(test.substring(-1, 9));
+      // 2. 시작인덱스가 종료인덱스보다 클 경우: substring의 경우 두 값을 바꿔 실행합니다.
+      console.log(test.slice(7, 3));
+      console.log(test.substring(7, 3));
+      console.log(test.substring(3, 7));
+    </script>
+  </body>
+</html>
