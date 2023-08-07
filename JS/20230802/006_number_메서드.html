@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>숫자를 표현하는 여러가지 기법</title>
+  </head>
+  <body>
+    <script>
+      // parseInt, parseFloat
+      parseInt("123"); // 123
+      parseInt("123.123"); // 123
+      parseInt("123px"); // 123
+      parseInt("px123"); // NaN
+      parseInt("     10"); // 10
+      parseFloat("123.123"); // 123.123
+      parseFloat("123.123px"); // 123.123
+      parseFloat("px123.123"); // NaN
+      parseInt("11", 2); // 3
+      parseInt("11", 10); // 11
+
+      // toString
+      let num = 3;
+      num.toString(); // "3"
+
+      // isNaN
+      isNaN(NaN); // true
+      isNaN(10); // false
+      isNaN("10"); // false
+      isNaN("10px"); // true
+      isNaN([]); // false
+      isNaN({}); //true
+
+      // Number.isNaN사용을 권고해드립니다.
+      Number.isNaN(NaN); // true
+      Number.isNaN(10); // false
+      Number.isNaN("10"); // false
+      Number.isNaN("10px"); // false
+      Number.isNaN([]); // false
+      Number.isNaN({}); // false
+
+      // math
+      Math.PI; // 3.141592653589793
+      // 0.5미만 내림 0.5이상 올림
+      Math.round(10.49); // 10
+      Math.round(10.77); // 11
+
+      Math.abs(-10); // 10 양수 반환
+      Math.pow(2, 3); // 8, 2**3
+      Math.pow(4, 0.5); // 2
+      Math.sqrt(16); // 4, 16**0.5 //제곱근;
+
+      Math.random(); // 0 ~ 1 사이의 랜덤한 숫자
+      Math.ceil(10.1); // 11 반올림
+      Math.floor(10.9); // 10 반내림
+      Math.max(1, 2, 3, 4, 5); // 5
+      Math.min(1, 2, 3, 4, 5); // 1
+
+      let test = [1, 2, 3];
+      Math.max(...test); // 3, 전개구문은 뒤에 있습니다.
+      Math.min(...test); // 1
+    </script>
+  </body>
+</html>

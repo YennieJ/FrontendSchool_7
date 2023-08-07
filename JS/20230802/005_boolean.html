@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>boolean</title>
+  </head>
+  <body>
+    <script>
+      // 1번 연습문제
+      // && 의 경우 둘다 true여야만 true이므로, 왼쪽 피연산자가 false면 바로 false로 평가된다.
+      console.log(true && false); // false
+      console.log(false && true); // false
+      // || 의 경우, 둘 중 하나만 true면 true로 평가되므로 왼쪽 피연산자가 true이면 바로 true를 반환한다.
+      console.log(false || true); // true
+      console.log(true || true); // true
+
+      // 2번 연습문제
+      console.log(!!"가"); // true
+      console.log(!""); // true 빈 문자열은 false
+
+      // 3번 연습문제(단록 회로 평가)
+      console.log("가" && "나"); // '나' 출력, '나'는 true로 평가
+      console.log(0 && -1); // 0 true && false
+      console.log(0 && 1); // 0 true && true
+      console.log(1 && 1); // 1 true && true
+      console.log(1 && "안녕"); // '안녕' true && "안녕"
+      console.log(1 && true); // true true && true
+      console.log(0 || true); // true false || true
+
+      // 순서 대로 평가
+      console.log(3 > 2 > 1); // false (3 > 2) > 1 (true(1)) > 1
+    </script>
+  </body>
+</html>

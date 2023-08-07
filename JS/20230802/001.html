@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String 메서드</title>
+  </head>
+  <body>
+    <script>
+      let s = "paullab CEO 이호준";
+      let ss = "CTO 김창영";
+      let sss = "paullab CEO 이호준 CTO 김창영";
+
+      // replace
+      // let newStr = str.replace(regexp|substr, newSubstr|function)
+      console.log(s.replace("CEO", "CFO")); // paullab CFO 이호준
+      console.log(sss.replace(/C[ET]O/g, "잡부")); // paullab 잡부 이호준 잡부 김창영
+
+      const string = `hojun, lee
+      gildong, hong
+      hojung, choi
+      junho, lee`;
+
+      // $1 = 첫번째 (\w+) $2 = 두번째 (\w+) RegExp.$1; RegExp.$2;
+      let result1 = string.replace(/(\w+),(\w+)/gm, "$1 $2");
+      let result2 = string.replace(/(\w+),(\w+)/gm, "$2 $1");
+      let result3 = string.replace(/(\w+),(\w+)/gm, "제 이름은 $1 성은 $2");
+
+      // replaceAll
+      // 사용에 주의해주세요. 구 브라우저에서 작동하지 않을 확률이 매우 높습니다. caniuse 확인해주세요.
+      // 21년도에 추가된 기능입니다.
+      console.log(sss.replaceAll("CTO", "잡부"));
+
+      // includes
+      ss.includes("CTO"); // true
+      ss.includes("CEO"); // false
+
+      // 메서드 채이닝
+      // 메서드 채이닝은 길어지면 가독성이 떨어집니다. 가독성을 위해 개행을 해주시면 좋습니다.
+      sss.replace("CEO", "CFO").includes("CEO").toString().toUpperCase();
+      sss.replace("CEO", "CFO").includes("CEO").toString().toUpperCase();
+
+      // split
+      s.split(" "); // ['paullab', 'CEO', '이호준']
+      "010-5044-2903".split("-"); // ['010', '5044', '2903']
+      "010-5044-2903".split(" "); // 띄어쓰기가 없습니다!
+      "010-5044-2903".split(""); // ['0', '1', '0', '-', '5', '0', '4', '4', '-', '2', '9', '0', '3']
+
+      // 문제: text1 ~ text4를 split을 사용해서 아래 배열로 만들어주세요.
+      let text1 = "aa bb cc dd";
+      let text2 = "aa-bb-cc-dd";
+      let text3 = "aa,bb,cc,dd";
+      let text4 = "aa,bb-cc-dd"; // 중급자 분들만 하세요.
+      // ['aa', 'bb', 'cc', 'dd']
+      // 해답코드
+      // 1.
+      text1.split(" ");
+      // 2.
+      text2.split("-");
+      // 3.
+      test3.split(",");
+      // 4.
+      text4.replace(",", "-").split("-");
+      text4.split(/[,-]/); // 정규식
+
+      let text5 = text4.replace(",", "-");
+      text5.split("-");
+
+      //trim
+      let text6 = "    aa bb cc dd    ";
+      text6.trim(); // 'aa bb cc dd'
+      text6.replaceAll(" ", ""); // 'aabbccdd'
+
+      // padStart
+      let text7 = "123";
+      text7.padStart(5, "0"); // '00123' *앞에 추가된다는 점.
+      // 우리의 목표: 00101 -> '  # #'
+      let text8 = "101";
+      text8.padStart(5, "0").replaceAll("0", " ").replaceAll("1", "#");
+
+      // concat
+      text1.concat(text2);
+    </script>
+  </body>
+</html>

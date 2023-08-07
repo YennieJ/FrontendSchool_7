@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script>
+      // 문제: 정수 n이 매개변수로 주어질 때 n의 각 자리 숫자의 합을 return해라.
+      // https://school.programmers.co.kr/learn/courses/30/lessons/120906
+
+      let answer = 0;
+      let inputValue = 1234;
+
+      // 1번째 풀이:
+      // inputValue = "" + inputValue; // 권장하지 않습니다!
+      // answer += +inputValue[0];
+      // answer += +inputValue[1];
+      // answer += +inputValue[2];
+      // answer += +inputValue[3];
+      // answer;
+
+      // 내가 1번째 풀이:
+      let toSrt = inputValue.toString();
+      answer += parseInt(toSrt[0]);
+      answer += parseInt(toSrt[1]);
+      answer += parseInt(toSrt[2]);
+      answer += parseInt(toSrt[3]);
+      answer;
+
+      // 2번째 풀이
+      inputValue = inputValue.toString();
+      answer += parseInt(inputValue[0]);
+      answer += parseInt(inputValue[1]);
+      answer += parseInt(inputValue[2]);
+      answer += parseInt(inputValue[3]);
+      answer;
+
+      // 3번째 풀이(C언어 스타일)
+      answer = answer + (inputValue % 10); // 0 -> 4
+      inputValue = parseInt(inputValue / 10); // 1234 -> 123
+
+      answer = answer + (inputValue % 10); // 4 -> 7
+      inputValue = parseInt(inputValue / 10); // 123 -> 12
+
+      answer = answer + (inputValue % 10); // 7 -> 9
+      inputValue = parseInt(inputValue / 10); // 12 -> 1
+
+      answer = answer + (inputValue % 10); // 9 -> 10
+      inputValue = parseInt(inputValue / 10); // 1 -> 0
+
+      // 4번째 풀이(안배운 reduce 사용!)
+      inputValue
+        .toString()
+        .split("")
+        // 왜 a에 parseInt 안붙혀도 되는가
+        .reduce((a, c) => a + parseInt(c), 0);
+    </script>
+  </body>
+</html>
