@@ -49,11 +49,12 @@
       inputValue = parseInt(inputValue / 10); // 1 -> 0
 
       // 4번째 풀이(안배운 reduce 사용!)
+      // const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
       inputValue
         .toString()
         .split("")
-        // 왜 a에 parseInt 안붙혀도 되는가
         .reduce((a, c) => a + parseInt(c), 0);
+      // a += parse(c)
     </script>
   </body>
 </html>
