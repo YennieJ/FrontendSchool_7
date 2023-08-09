@@ -3,7 +3,11 @@ article {
   flex-direction: column;
 }
 
-.question,
+.question {
+  /* display: none; */
+}
+
+.answer,
 .result {
   display: none;
 }

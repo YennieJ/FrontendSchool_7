@@ -12,6 +12,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
+    <style>
+      * {
+        outline: none;
+      }
+      .addOutline {
+        outline: 5px solid #0d6efd;
+      }
+    </style>
   </head>
   <body class="container">
     <article class="start">
@@ -33,12 +41,14 @@
       </div>
       <h2 class="text-center" id="title">Question</h2>
       <input id="type" type="hidden" value="EI" />
-      <button id="A" type="button" class="btn btn-primary mt-5">
+      <button id="A" type="button" class="btn btn-secondary mt-5">
         Test start
       </button>
-      <button id="B" type="button" class="btn btn-primary mt-5">
+      <button id="B" type="button" class="btn btn-secondary mt-5">
         Test start
       </button>
+
+      <!-- <section class="answer">해답이 들어갈 자리</section> -->
     </article>
     <article class="result">
       <img id="img" src="" alt="mola" />
@@ -46,10 +56,10 @@
       <h3 id="explain">설명</h3>
     </article>
     <!-- input type=hidden: 값을 받아야하고 화면엔 나타내고 싶지 않을 때 -->
-    <input type="hidden" id="EI" value="0" />
-    <input type="hidden" id="SN" value="0" />
+    <input type="hidden" id="correct" value="0" />
+    <!-- <input type="hidden" id="SN" value="0" />
     <input type="hidden" id="TF" value="0" />
-    <input type="hidden" id="JP" value="0" />
+    <input type="hidden" id="JP" value="0" /> -->
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -67,26 +77,26 @@
       //문제
       let num = 1;
       const q = {
-        1: { title: "Q1", type: "EI", A: "E", B: "I" },
-        2: { title: "Q2", type: "EI", A: "E", B: "I" },
-        3: { title: "Q3", type: "EI", A: "E", B: "I" },
-        4: { title: "Q4", type: "SN", A: "S", B: "N" },
-        5: { title: "Q5", type: "SN", A: "S", B: "N" },
-        6: { title: "Q6", type: "SN", A: "S", B: "N" },
-        7: { title: "Q7", type: "TF", A: "T", B: "F" },
-        8: { title: "Q8", type: "TF", A: "T", B: "F" },
-        9: { title: "Q9", type: "TF", A: "T", B: "F" },
-        10: { title: "Q10", type: "JP", A: "J", B: "P" },
-        11: { title: "Q11", type: "JP", A: "J", B: "P" },
-        12: { title: "Q12", type: "JP", A: "J", B: "P" },
+        1: { title: "Q1", type: "correct", A: "YES", B: "NO" },
+        2: { title: "Q2", type: "wrong", A: "YES", B: "NO" },
+        3: { title: "Q3", type: "correct", A: "YES", B: "NO" },
+        // 4: { title: "Q4", type: "SN", A: "S", B: "N" },
+        // 5: { title: "Q5", type: "SN", A: "S", B: "N" },
+        // 6: { title: "Q6", type: "SN", A: "S", B: "N" },
+        // 7: { title: "Q7", type: "TF", A: "T", B: "F" },
+        // 8: { title: "Q8", type: "TF", A: "T", B: "F" },
+        // 9: { title: "Q9", type: "TF", A: "T", B: "F" },
+        // 10: { title: "Q10", type: "JP", A: "J", B: "P" },
+        // 11: { title: "Q11", type: "JP", A: "J", B: "P" },
+        // 12: { title: "Q12", type: "JP", A: "J", B: "P" },
       };
 
       //어떤 동물
-      const result = {
-        ESTJ: { animalImg: "lion", name: "lion", explain: "사자다" },
-        INFP: { animalImg: "cat", name: "cat", explain: "고양이다" },
-        ISFJ: { animalImg: "fox", name: "fox", explain: "나다" },
-      };
+      // const result = {
+      //   ESTJ: { animalImg: "lion", name: "lion", explain: "사자다" },
+      //   INFP: { animalImg: "cat", name: "cat", explain: "고양이다" },
+      //   ISFJ: { animalImg: "fox", name: "fox", explain: "나다" },
+      // };
 
       // 문제페이지로 넘어가기
       function start() {
@@ -96,9 +106,18 @@
       }
       // buttonA click
       $("#A").click(function () {
-        let type = $("#type").val(); //EI
-        let preValue = $("#" + type).val(); // #EI.val = 0
-        $("#" + type).val(parseInt(preValue) + 1);
+        const type = $("#type").val();
+        if (type === "correct") {
+          $("#A").css("background-color", "#0d6efd");
+          const preValue = $("#" + type).val();
+          $("#" + type).val(parseInt(preValue) + 1);
+          console.log($("#" + type).val());
+        } else {
+          $("#A").css("background-color", "#dc3545");
+          console.log("nn");
+        }
+
+        // $(".answer").show();
         next();
       });
 
@@ -116,15 +135,15 @@
           // mbti확인
           let mbti = "";
           //q[num]을 기준으로 input Id의 value가 2보다 크면  Avalue 작으면 Bvalue
-          $("#EI").val() < 2 ? (mbti += "I") : (mbti += "E");
-          $("#SN").val() < 2 ? (mbti += "N") : (mbti += "S");
-          $("#TF").val() < 2 ? (mbti += "F") : (mbti += "T");
-          $("#JP").val() < 2 ? (mbti += "P") : (mbti += "J");
+          // $("#EI").val() < 2 ? (mbti += "I") : (mbti += "E");
+          // $("#SN").val() < 2 ? (mbti += "N") : (mbti += "S");
+          // $("#TF").val() < 2 ? (mbti += "F") : (mbti += "T");
+          // $("#JP").val() < 2 ? (mbti += "P") : (mbti += "J");
 
           //result결과
-          $("#img").attr("alt", result[mbti]["animalImg"]);
-          $("#animal").html(result[mbti]["name"]);
-          $("#explain").html(result[mbti]["explain"]);
+          // $("#img").attr("alt", result[mbti]["animalImg"]);
+          // $("#animal").html(result[mbti]["name"]);
+          // $("#explain").html(result[mbti]["explain"]);
         } else {
           $(".progress-bar").attr(
             "style",
