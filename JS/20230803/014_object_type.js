@@ -4,7 +4,7 @@ let arr2 = arr1;
 console.log(arr2);
 
 arr1[0] = 10;
-// arr1 = [10, 20];
+// arr1 = [10, 2, 3];
 console.log(arr2);
 
 // 비교해보세요.
