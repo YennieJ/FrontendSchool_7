@@ -41,24 +41,24 @@
       </div>
       <h2 class="text-center" id="title">Question</h2>
       <input id="type" type="hidden" value="EI" />
-      <button id="A" type="button" class="btn btn-secondary mt-5">
+      <button id="A" type="button" class="btn btn-primary mt-5">
         Test start
       </button>
-      <button id="B" type="button" class="btn btn-secondary mt-5">
+      <button id="B" type="button" class="btn btn-primary mt-5">
         Test start
       </button>
-
-      <!-- <section class="answer">해답이 들어갈 자리</section> -->
     </article>
     <article class="result">
-      <img id="img" src="" alt="mola" />
+      <!-- <img id="img" src="" alt="mola" />
       <h2 id="animal">동물이름</h2>
-      <h3 id="explain">설명</h3>
+      <h3 id="explain">설명</h3> -->
+      <div id="score">score</div>
+      <div id="wrongAnswer">wrongAnswer</div>
     </article>
     <!-- input type=hidden: 값을 받아야하고 화면엔 나타내고 싶지 않을 때 -->
     <input type="hidden" id="correct" value="0" />
-    <!-- <input type="hidden" id="SN" value="0" />
-    <input type="hidden" id="TF" value="0" />
+    <!-- <input type="hidden" id="title" value="" /> -->
+    <!-- <input type="hidden" id="TF" value="0" />
     <input type="hidden" id="JP" value="0" /> -->
 
     <script
@@ -76,10 +76,20 @@
       // A와 B를 클릭했을 때 A점수만 매겨서 비교하기
       //문제
       let num = 1;
+
       const q = {
         1: { title: "Q1", type: "correct", A: "YES", B: "NO" },
         2: { title: "Q2", type: "wrong", A: "YES", B: "NO" },
-        3: { title: "Q3", type: "correct", A: "YES", B: "NO" },
+        3: { title: "Q3", type: "wrong", A: "YES", B: "NO" },
+        // 4: { title: "Q4", type: "correct", A: "YES", B: "NO" },
+        // 5: { title: "Q5", type: "wrong", A: "YES", B: "NO" },
+        // 6: { title: "Q6", type: "wrong", A: "YES", B: "NO" },
+        // 7: { title: "Q7", type: "correct", A: "YES", B: "NO" },
+        // 8: { title: "Q8", type: "wrong", A: "YES", B: "NO" },
+        // 9: { title: "Q9", type: "wrong", A: "YES", B: "NO" },
+        // 10: { title: "Q10", type: "correct", A: "YES", B: "NO" },
+        // 11: { title: "Q11", type: "wrong", A: "YES", B: "NO" },
+        // 12: { title: "Q12", type: "wrong", A: "YES", B: "NO" },
         // 4: { title: "Q4", type: "SN", A: "S", B: "N" },
         // 5: { title: "Q5", type: "SN", A: "S", B: "N" },
         // 6: { title: "Q6", type: "SN", A: "S", B: "N" },
@@ -90,6 +100,9 @@
         // 11: { title: "Q11", type: "JP", A: "J", B: "P" },
         // 12: { title: "Q12", type: "JP", A: "J", B: "P" },
       };
+
+      const questionLength = Object.keys(q).length;
+      const wrongAnswer = [];
 
       //어떤 동물
       // const result = {
@@ -106,29 +119,31 @@
       }
       // buttonA click
       $("#A").click(function () {
-        const type = $("#type").val();
+        const type = $("#type").val(); // correct
         if (type === "correct") {
-          $("#A").css("background-color", "#0d6efd");
-          const preValue = $("#" + type).val();
+          // $("#A").css("background-color", "#0d6efd");
+
+          // 맞았을 때 점수 추가
+          const preValue = $("#" + type).val(); //#correct.value = "0"
           $("#" + type).val(parseInt(preValue) + 1);
-          console.log($("#" + type).val());
         } else {
-          $("#A").css("background-color", "#dc3545");
-          console.log("nn");
+          // $("#A").css("background-color", "#dc3545");
+          // console.log("nn");
+
+          // 틀린 타이틀 저장
+          // 왜 -1 이냐면 next()가 내용이 다 그려진 후 ++ 되니까
+          wrongAnswer.push(q[num - 1]["title"]);
         }
 
-        // $(".answer").show();
         next();
       });
-
       // buttonB click
       $("#B").click(function () {
         next();
       });
-
       // 다음문제로 넘어가기
       function next() {
-        if (num === 13) {
+        if (num === questionLength + 1) {
           $(".question").hide();
           $(".result").show();
 
@@ -144,15 +159,20 @@
           // $("#img").attr("alt", result[mbti]["animalImg"]);
           // $("#animal").html(result[mbti]["name"]);
           // $("#explain").html(result[mbti]["explain"]);
+
+          // 나중에 결과
+          $("#score").html(`${$("#correct").val()} / ${Object.keys(q).length}`);
+          $("#wrongAnswer").html(wrongAnswer.join());
         } else {
           $(".progress-bar").attr(
             "style",
-            "width: calc(100 / 12 *" + num + "%)"
+            "width: calc(100 / " + questionLength + "*" + num + "%)"
           );
           $("#title").html(q[num]["title"]); //h2=> q[v][Q1]
           $("#type").val(q[num]["type"]); //input=> q[v][EI]
           $("#A").html(q[num]["A"]); //buttonA=> q[v][E]
           $("#B").html(q[num]["B"]); //buttonB=> q[v][I]
+
           num++;
         }
       }
