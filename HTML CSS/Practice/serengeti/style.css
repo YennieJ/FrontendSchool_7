@@ -6,8 +6,34 @@ article {
 .question {
   /* display: none; */
 }
-
+/* 
 .answer,
 .result {
   display: none;
+} */
+
+/* * {
+  outline: none;
+}
+.addOutline {
+  outline: 5px solid #0d6efd;
+} */
+.score {
+  letter-spacing: 20px;
+}
+.reStudy {
+  position: relative;
+}
+.reStudy::before {
+  content: "다시 공부하자";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #fff;
+  color: #dc3545;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 0 10px;
 }
