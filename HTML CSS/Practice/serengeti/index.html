@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mbtitest</title>
+    <title>JS Quiz</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,12 +15,12 @@
   </head>
   <body class="container">
     <article class="start">
-      <h1 class="mt-5 text-center">나랑 꼭 닮은 세렝게티 동물은?</h1>
+      <h1 class="mt-5 text-center">JS Quiz : Str,Num</h1>
       <button type="button" class="btn btn-primary mt-5" onclick="start()">
         Test start
       </button>
     </article>
-    <article class="question">
+    <article class="question text-center">
       <div
         class="progress my-5"
         role="progressbar"
@@ -29,28 +29,33 @@
         aria-valuemin="0"
         aria-valuemax="100"
       >
-        <div class="progress-bar" style="width: calc(100 / 12 * 1%)"></div>
+        <div class="progress-bar"></div>
       </div>
 
-      <code id="code" class="code">code</code>
-      <h2 id="question" class="text-center">Question</h2>
+      <code
+        id="code"
+        class="code fs-1 border border-3 border-light-subtle rounded p-3 mb-5"
+        >code</code
+      >
+      <h2 id="question" class="p-3">Question</h2>
 
       <input id="type" type="hidden" />
       <button id="A" type="button" class="btn btn-primary mt-5">YES</button>
       <button id="B" type="button" class="btn btn-primary mt-5">NO</button>
     </article>
     <article class="result text-center">
-      <!-- <div id="score">score</div>
-      <div id="wrongAnswer">wrongAnswer</div> -->
       <h2 class="my-5">오늘 정답 갯수는?</h2>
-      <p id="score" class="score fs-2 fw-bold mb-5">1/3</p>
+      <p id="score" class="score fs-2 fw-bold mb-5">0/0</p>
 
-      <div class="reStudy border border-3 border-danger rounded-2 p-5">
-        <strong id="wrongAnswer" class="text-break fs-5 fw-normal"
-          >worng-answer</strong
+      <div class="reStudy border border-3 border-danger rounded-2 p-5 mb-5">
+        <strong id="wrongAnswer" class="text-break text-wrap fs-5 fw-bold"
+          >wrong answer</strong
         >
       </div>
+
+      <section class="answer mb-5"></section>
     </article>
+
     <!-- input type=hidden: 값을 받아야하고 화면엔 나타내고 싶지 않을 때 -->
     <input type="hidden" id="correct" value="0" />
 
@@ -66,13 +71,13 @@
     ></script>
 
     <script>
-      //문제
       let num = 1;
 
+      //문제
       // type은 A기준으로 correct
-      const q = {
+      const Q = {
         1: {
-          title: "Str.search()",
+          title: "Str.indexOf(),Str.search()",
           question:
             "찾는 문자열이 있다면 인덱스 값을, 없다면 -1이 반환되는 메소드 중 정규식을 쓸 수 있는 메소드는 무엇인가요?",
           type: "wrong",
@@ -80,7 +85,7 @@
           B: "Str.search()",
         },
         2: {
-          title: "Str.slice()",
+          title: "Str.slice(),Str.substring()",
           question:
             "시작 인덱스를 기준으로 문자열을 잘라내어 잘린 문자열을 반환하는 메소드 중 음수를 취급하는 메소드는 무엇인가요?",
           type: "correct",
@@ -88,7 +93,7 @@
           B: "Str.substring()",
         },
         3: {
-          title: "Str.slice()",
+          title: "Str.slice(),Str.substring()",
           code: `const str = "Mozilla" <br/> console.log(str.slice(7,4))`,
           question: "의 정답은 무엇인가요?",
           type: "wrong",
@@ -148,67 +153,238 @@
           B: "No",
         },
       };
+      // 해설
+      const A = {
+        1: {
+          title: "Str.indexOf(),Str.search()",
+          title1: "Str.indexOf()",
+          title2: "Str.search()",
+          rule1: "(searchElement[,fromIndex])",
+          rule2: "(regexp)",
+          result: "? firstIndex : -1",
+          sameResult: "2",
+        },
+        2: {
+          title: "Str.slice(),Str.substring()",
+          title1: "Str.slice()",
+          title2: "Str.substring()",
+          rule1: "(beginIndex[,endIndex])",
+          sameRule: "2",
+          point1: `(b > e) && "" <br> 음수 && lastIndex : -1`,
+          point2: `(b > e) && (e,b) <br> 음수 && 0`,
+          result: "잘라진 문자열",
+          sameResult: "2",
+        },
+        3: {
+          title: "Str.replace(),Str.replaceAll()",
+          title1: "Str.replace()",
+          title2: "Str.replaceAll()",
+          rule1: "(regexp | substr , newSubstr | function)",
+          sameRule: "2",
+          point1: "일치하는 첫번째 문자열만 치환하여",
+          point2: "일치하는 모든 문자열을 치환하여",
+          result: "새로운 문자열",
+          sameResult: "2",
+        },
+        4: {
+          title: "Str.includes()",
+          title1: "Str.includes()",
+          sameTitle: "2",
+          rule1: "(searchString[,fromIndex])",
+          sameRule: "2",
+          result: "? true : false",
+          sameResult: "2",
+        },
+        5: {
+          title: "Str.split()",
+          title1: "Str.split()",
+          sameTitle: "2",
+          rule1: "([separator,limit])",
+          sameRule: "2",
+          result: "new Array",
+          sameResult: "2",
+        },
+        6: {
+          title: "Str.trim()",
+          title1: "Str.trim()",
+          sameTitle: "2",
+          result: "새로운 문자열",
+          sameResult: "2",
+        },
+        7: {
+          title: "Str.padStart()",
+          title1: "Str.padStart()",
+          sameTitle: "2",
+          rule1: "(targetLength",
+          rule2: "[,padString])",
+          point1: "목표길이가 초과되면 좌측 일부를 잘라서",
+          point2: " 없다면 공백으로 처리 된다.",
+          result: "새로운 문자열",
+          sameResult: "2",
+        },
+        8: {
+          title: "Str.concat()",
+          title1: "Str.concat()",
+          sameTitle: "2",
+          rule1: "(str2,str3[, ... [,strN]])",
+          sameRule: "2",
+          point1: "할당 연산자(+,+=)를 사용하는게 더 좋다.",
+          samePoint: "2",
+          result: "새로운 문자열",
+          sameResult: "2",
+        },
+        9: {
+          title: "parseInt(),parseFloat()",
+          title1: "parseInt()",
+          title2: "parseFloat()",
 
-      const questionLength = Object.keys(q).length;
-      const wrongAnswer = [];
+          rule1: "(string[,radix])",
+          rule2: "(string)",
+
+          point1: "문자열이 아닌 경우 ToString으로 문자열 자동 변환",
+          samePoint: "2",
+          result: "? 정수 : NaN",
+          result2: "? 실수 : NaN",
+        },
+      };
+
+      const questionLength = Object.keys(Q).length;
+      const wrongAnswer = new Set();
+
+      // 해설 테이블 만들기
+      function answer() {
+        Object.values(A).map((v) =>
+          $(".answer").append(
+            $("<table>")
+              .prop({
+                className: wrongAnswer.has(v.title)
+                  ? "table table-bordered mb-5 table-dark"
+                  : "table table-bordered mb-5",
+              })
+              .append(
+                $("<thead></thead>").append(
+                  $("<tr>").append(
+                    $("<th>").prop({
+                      innerHTML: "메소드",
+                    }),
+                    $("<th>").prop({
+                      innerHTML: v.title1,
+                      colspan: v.sameTitle,
+                    }),
+                    v.title2 &&
+                      $("<th>").prop({
+                        innerHTML: v.title2,
+                      })
+                  )
+                ),
+                v.rule1 &&
+                  $("<tbody></tbody>").append(
+                    $("<tr>").append(
+                      $("<th>").prop({
+                        innerHTML: "규칙",
+                      }),
+                      $("<td>").prop({
+                        innerHTML: v.rule1,
+                        colspan: v.sameRule,
+                      }),
+                      v.rule2 &&
+                        $("<td>").prop({
+                          innerHTML: v.rule2,
+                        })
+                    ),
+                    v.point1 &&
+                      $("<tr>").append(
+                        $("<th>").prop({
+                          innerHTML: "특징",
+                        }),
+                        $("<td>").prop({
+                          innerHTML: v.point1,
+                          colspan: v.samePoint,
+                        }),
+                        v.point2 &&
+                          $("<td>").prop({
+                            innerHTML: v.point2,
+                          })
+                      )
+                  ),
+                $("<tfoot></tfoot>").append(
+                  $("<tr>").append(
+                    $("<th>").prop({
+                      innerHTML: "반환",
+                    }),
+                    $("<td>").prop({
+                      innerHTML: v.result,
+                      colspan: v.sameResult,
+                    }),
+                    v.result2 &&
+                      $("<td>").prop({
+                        innerHTML: v.result2,
+                      })
+                  )
+                )
+              )
+          )
+        );
+      }
+
       // 문제페이지로 넘어가기
       function start() {
         $(".start").hide();
         $(".question").show();
         next();
       }
+
       // buttonA click
       $("#A").click(function () {
         const type = $("#type").val(); // correct
         if (type === "correct") {
-          // $("#A").css("background-color", "#0d6efd");
-
           // 맞았을 때 점수 추가
           const preValue = $("#" + type).val(); //#correct.value = "0"
           $("#" + type).val(parseInt(preValue) + 1);
         } else {
-          // $("#A").css("background-color", "#dc3545");
-          // console.log("nn");
-
           // 틀린 타이틀 저장
           // 왜 -1 이냐면 next()가 내용이 다 그려진 후 ++ 되니까
-          wrongAnswer.push(q[num - 1]["title"]);
+          wrongAnswer.add(Q[num - 1]["title"]);
         }
-
         next();
       });
+
       // buttonB click
       $("#B").click(function () {
         const type = $("#type").val(); // correct
         if (type === "correct") {
-          wrongAnswer.push(q[num - 1]["title"]);
+          // 틀린 타이틀 저장
+          wrongAnswer.add(Q[num - 1]["title"]);
         } else {
           const preValue = $("#correct").val();
           $("#correct").val(parseInt(preValue) + 1);
         }
-
         next();
       });
-      // 다음문제로 넘어가기
+
+      // 다음문제 or 결과 페이지로
       function next() {
         if (num === questionLength + 1) {
           $(".question").hide();
           $(".result").show();
 
           // 나중에 결과
-          $("#score").html(`${$("#correct").val()} / ${Object.keys(q).length}`);
-          $("#wrongAnswer").html(wrongAnswer.join());
+          $("#score").html(`${$("#correct").val()} / ${Object.keys(Q).length}`);
+          $("#wrongAnswer").html([...wrongAnswer].join());
+
+          wrongAnswer.size === 0 && $(".reStudy").hide();
+          answer();
         } else {
           $(".progress-bar").attr(
             "style",
             "width: calc(100 / " + questionLength + "*" + num + "%)"
           );
-          $("#question").html(q[num]["question"]);
-          q[num]["code"] ? $(".code").show() : $(".code").hide();
-          $("#code").html(q[num]["code"]);
-          $("#type").val(q[num]["type"]);
-          $("#A").html(q[num]["A"]);
-          $("#B").html(q[num]["B"]);
+          $("#question").html(Q[num]["question"]);
+          Q[num]["code"] ? $(".code").show() : $(".code").hide();
+          $("#code").html(Q[num]["code"]);
+          $("#type").val(Q[num]["type"]);
+          $("#A").html(Q[num]["A"]);
+          $("#B").html(Q[num]["B"]);
 
           num++;
         }
