@@ -34,26 +34,33 @@
 
       <code
         id="code"
-        class="code fs-1 border border-3 border-light-subtle rounded p-3 mb-5"
+        class="code fs-3 border border-3 border-light-subtle rounded p-3"
         >code</code
       >
-      <h2 id="question" class="p-3">Question</h2>
+      <h2 id="question" class="p-3 mb-5">Question</h2>
 
       <input id="type" type="hidden" />
-      <button id="A" type="button" class="btn btn-primary mt-5">YES</button>
-      <button id="B" type="button" class="btn btn-primary mt-5">NO</button>
+      <button id="A" type="button" class="btn btn-primary mb-4">YES</button>
+      <button id="B" type="button" class="btn btn-primary">NO</button>
     </article>
     <article class="result text-center">
-      <h2 class="my-5">오늘 정답 갯수는?</h2>
+      <h2 class="my-3">오늘 정답 갯수는?</h2>
       <p id="score" class="score fs-2 fw-bold mb-5">0/0</p>
 
-      <div class="reStudy border border-3 border-danger rounded-2 p-5 mb-5">
+      <div
+        class="reStudy position-relative border border-3 border-danger rounded-2 p-5 mb-5"
+      >
         <strong id="wrongAnswer" class="text-break text-wrap fs-5 fw-bold"
           >wrong answer</strong
         >
       </div>
+      <section class="explanation mb-3">
+        <h3 class="text-primary mb-4 fw-bold">틀린 문제 확인하기</h3>
+      </section>
 
-      <section class="answer mb-5"></section>
+      <section class="theoremTable mb-5">
+        <h3 class="fw-bold mb-4">정리</h3>
+      </section>
     </article>
 
     <!-- input type=hidden: 값을 받아야하고 화면엔 나타내고 싶지 않을 때 -->
@@ -73,11 +80,11 @@
     <script>
       let num = 1;
 
-      //문제
+      // 문제
       // type은 A기준으로 correct
-      const Q = {
+      const questionObj = {
         1: {
-          title: "Str.indexOf(),Str.search()",
+          title: "Str.search()",
           question:
             "찾는 문자열이 있다면 인덱스 값을, 없다면 -1이 반환되는 메소드 중 정규식을 쓸 수 있는 메소드는 무엇인가요?",
           type: "wrong",
@@ -85,7 +92,7 @@
           B: "Str.search()",
         },
         2: {
-          title: "Str.slice(),Str.substring()",
+          title: "Str.slice()",
           question:
             "시작 인덱스를 기준으로 문자열을 잘라내어 잘린 문자열을 반환하는 메소드 중 음수를 취급하는 메소드는 무엇인가요?",
           type: "correct",
@@ -93,10 +100,10 @@
           B: "Str.substring()",
         },
         3: {
-          title: "Str.slice(),Str.substring()",
-          code: `const str = "Mozilla" <br/> console.log(str.slice(7,4))`,
+          title: "Str.substring()",
+          code: `const str = "Mozilla" <br/> console.log(str.substring(7,4))`,
           question: "의 정답은 무엇인가요?",
-          type: "wrong",
+          type: "correct",
           A: "lla",
           B: `""`,
         },
@@ -135,16 +142,6 @@
           B: "['J', 'a', 'n', ',', 'F']",
         },
         8: {
-          title: "Str.split()",
-          code: `const monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" <br/>
-          // ['Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec']
-          `,
-          question: "을 만들기 위해서 사용해야 하는 메소드는 무엇인가요?",
-          type: "wrong",
-          A: "monthString.split(',')",
-          B: "monthString.split()",
-        },
-        9: {
           title: "parseInt(),parseFloat()",
           question:
             "parseInt()는 정수로, parseFloat()는 실수로 반환 하는데 Number Type만 가능하다.",
@@ -153,10 +150,61 @@
           B: "No",
         },
       };
-      // 해설
-      const A = {
+
+      // 틀린 문제 다시보기
+      const explanationObj = {
         1: {
-          title: "Str.indexOf(),Str.search()",
+          num: 1,
+          title: "Str.search()",
+          answer: "Str.search()만 정규식을 사용할 수 있습니다.",
+        },
+        2: {
+          num: 2,
+          title: "Str.slice()",
+          answer:
+            "Str.slice()만 음수 사용이 가능하고 Str.substring()에 음수를 사용하면 빈 문자열이 반환 된다.",
+          code: `const str = "Mozilla" <br/> str.slice(-4,-1) // "ill" <br/> str.substring(-4,-1) // ""`,
+        },
+        3: {
+          num: 3,
+          title: "Str.substring()",
+          answer:
+            "Str.slice()는 beginIndex가 Str.length와 같거나 크면 빈 문자열이 반환된다. <br/>Str.substring()는 beginIndex가 endIndex보다 크다면 두 수를 바꾼 뒤 실행한다.<br/>str.substring(7,4) => str.substring(4,7)",
+          code: `const str = "Mozilla" <br/> str.slice(7,4) // "" <br/> str.substring(7,4) // "ill")`,
+        },
+        4: {
+          num: 4,
+          title: "Str.replace(),Str.replaceAll()",
+          answer: "정규식 사용이 가능합니다.",
+        },
+        5: {
+          num: 5,
+          title: "Str.includes()",
+          answer: "Str.includes()는 Boolean(true or false)을 반환한다.",
+        },
+        6: {
+          num: 6,
+          title: "Str.padStart()",
+          answer: "Str.padStart()는 String 메소드입니다.",
+          code: `Number Type을 사용하고 싶다면 <br/> question.toString().pasStart(5,"0") // "00123"`,
+        },
+        7: {
+          num: 7,
+          title: "Str.split()",
+          answer: `Str.split([separator,limit]) <br/> separator를 기준으로 limit만큼 자른 Array를 반환합니다.`,
+          code: `['Jan', 'Feb', 'Mar', 'Apr', 'May']`,
+        },
+        8: {
+          num: 8,
+          title: "parseInt(),parseFloat()",
+          answer:
+            "Number, String Type 모두 사용 가능합니다 <br/> (Number Type이 들어오면 ToString으로 자동 문자열로 변환되어 정수 또는 실수로 반환해줌)",
+        },
+      };
+
+      // 해설(정리)
+      const theoremTableObj = {
+        1: {
           title1: "Str.indexOf()",
           title2: "Str.search()",
           rule1: "(searchElement[,fromIndex])",
@@ -165,7 +213,6 @@
           sameResult: "2",
         },
         2: {
-          title: "Str.slice(),Str.substring()",
           title1: "Str.slice()",
           title2: "Str.substring()",
           rule1: "(beginIndex[,endIndex])",
@@ -187,7 +234,6 @@
           sameResult: "2",
         },
         4: {
-          title: "Str.includes()",
           title1: "Str.includes()",
           sameTitle: "2",
           rule1: "(searchString[,fromIndex])",
@@ -196,7 +242,6 @@
           sameResult: "2",
         },
         5: {
-          title: "Str.split()",
           title1: "Str.split()",
           sameTitle: "2",
           rule1: "([separator,limit])",
@@ -204,15 +249,8 @@
           result: "new Array",
           sameResult: "2",
         },
+
         6: {
-          title: "Str.trim()",
-          title1: "Str.trim()",
-          sameTitle: "2",
-          result: "새로운 문자열",
-          sameResult: "2",
-        },
-        7: {
-          title: "Str.padStart()",
           title1: "Str.padStart()",
           sameTitle: "2",
           rule1: "(targetLength",
@@ -222,8 +260,24 @@
           result: "새로운 문자열",
           sameResult: "2",
         },
+        7: {
+          title: "parseInt(),parseFloat()",
+          title1: "parseInt()",
+          title2: "parseFloat()",
+          rule1: "(string[,radix])",
+          rule2: "(string)",
+          point1: "문자열이 아닌 경우 ToString으로 문자열 자동 변환",
+          samePoint: "2",
+          result: "? 정수 : NaN",
+          result2: "? 실수 : NaN",
+        },
         8: {
-          title: "Str.concat()",
+          title1: "Str.trim()",
+          sameTitle: "2",
+          result: "새로운 문자열",
+          sameResult: "2",
+        },
+        9: {
           title1: "Str.concat()",
           sameTitle: "2",
           rule1: "(str2,str3[, ... [,strN]])",
@@ -233,33 +287,78 @@
           result: "새로운 문자열",
           sameResult: "2",
         },
-        9: {
-          title: "parseInt(),parseFloat()",
-          title1: "parseInt()",
-          title2: "parseFloat()",
-
-          rule1: "(string[,radix])",
-          rule2: "(string)",
-
-          point1: "문자열이 아닌 경우 ToString으로 문자열 자동 변환",
-          samePoint: "2",
-          result: "? 정수 : NaN",
-          result2: "? 실수 : NaN",
-        },
       };
 
-      const questionLength = Object.keys(Q).length;
-      const wrongAnswer = new Set();
+      const questionLength = Object.keys(questionObj).length;
+      const wrongAnswerArray = new Set();
 
-      // 해설 테이블 만들기
-      function answer() {
-        Object.values(A).map((v) =>
-          $(".answer").append(
+      // 틀린문제 다시보기 만들기
+      function explanation() {
+        Object.values(explanationObj).map((v) =>
+          $(".explanation").append(
+            wrongAnswerArray.has(v.title) &&
+              $("<div>")
+                .prop({
+                  className:
+                    "position-relative border border-primary  border-3 rounded-2 mb-5 ",
+                })
+                .append(
+                  $("<h4>").prop({
+                    innerHTML: v.title,
+                    className:
+                      "position-absolute top-0 start-50 translate-middle bg-white px-4",
+                  }),
+                  $("<div>")
+                    .prop({
+                      className:
+                        "position-relative pt-4 pe-4 py-3 ps-5  border-bottom  border-3 text-secondary",
+                    })
+                    .append(
+                      $("<span>").prop({
+                        innerHTML: "Q:",
+                        className: "question-mark fs-1 ",
+                      }),
+                      questionObj[v.num].code &&
+                        $("<div>").prop({
+                          innerHTML: questionObj[v.num].code,
+                          className: "fs-6 mb-2",
+                        }),
+                      $("<p>").prop({
+                        innerHTML: questionObj[v.num].question,
+                        className: "",
+                      })
+                    ),
+                  $("<div>")
+                    .prop({
+                      className: "position-relative pe-4 py-3 ps-5  ",
+                    })
+                    .append(
+                      $("<div>").prop({
+                        innerHTML: v.answer,
+                        className: "fs-5 fst-italic fw-bold mb-2",
+                      }),
+                      v.code &&
+                        $("<div>").prop({
+                          innerHTML: v.code,
+                          className: "bg-dark text-light rounded-2",
+                        })
+                    )
+                )
+          )
+        );
+      }
+      // 해설(정리) 테이블 만들기
+      function theoremTable() {
+        Object.values(theoremTableObj).map((v) =>
+          $(".theoremTable").append(
             $("<table>")
               .prop({
-                className: wrongAnswer.has(v.title)
-                  ? "table table-bordered mb-5 table-dark"
-                  : "table table-bordered mb-5",
+                className:
+                  wrongAnswerArray.has(v.title) ||
+                  wrongAnswerArray.has(v.title1) ||
+                  wrongAnswerArray.has(v.title2)
+                    ? "table table-bordered mb-5 table-dark"
+                    : "table table-bordered mb-5",
               })
               .append(
                 $("<thead></thead>").append(
@@ -344,7 +443,7 @@
         } else {
           // 틀린 타이틀 저장
           // 왜 -1 이냐면 next()가 내용이 다 그려진 후 ++ 되니까
-          wrongAnswer.add(Q[num - 1]["title"]);
+          wrongAnswerArray.add(questionObj[num - 1]["title"]);
         }
         next();
       });
@@ -354,7 +453,7 @@
         const type = $("#type").val(); // correct
         if (type === "correct") {
           // 틀린 타이틀 저장
-          wrongAnswer.add(Q[num - 1]["title"]);
+          wrongAnswerArray.add(questionObj[num - 1]["title"]);
         } else {
           const preValue = $("#correct").val();
           $("#correct").val(parseInt(preValue) + 1);
@@ -369,22 +468,25 @@
           $(".result").show();
 
           // 나중에 결과
-          $("#score").html(`${$("#correct").val()} / ${Object.keys(Q).length}`);
-          $("#wrongAnswer").html([...wrongAnswer].join());
+          $("#score").html(
+            `${$("#correct").val()} / ${Object.keys(questionObj).length}`
+          );
+          $("#wrongAnswer").html([...wrongAnswerArray].join());
 
-          wrongAnswer.size === 0 && $(".reStudy").hide();
-          answer();
+          wrongAnswerArray.size === 0 && $(".reStudy").hide();
+          explanation();
+          theoremTable();
         } else {
           $(".progress-bar").attr(
             "style",
             "width: calc(100 / " + questionLength + "*" + num + "%)"
           );
-          $("#question").html(Q[num]["question"]);
-          Q[num]["code"] ? $(".code").show() : $(".code").hide();
-          $("#code").html(Q[num]["code"]);
-          $("#type").val(Q[num]["type"]);
-          $("#A").html(Q[num]["A"]);
-          $("#B").html(Q[num]["B"]);
+          $("#question").html(questionObj[num]["question"]);
+          questionObj[num]["code"] ? $(".code").show() : $(".code").hide();
+          $("#code").html(questionObj[num]["code"]);
+          $("#type").val(questionObj[num]["type"]);
+          $("#A").html(questionObj[num]["A"]);
+          $("#B").html(questionObj[num]["B"]);
 
           num++;
         }
