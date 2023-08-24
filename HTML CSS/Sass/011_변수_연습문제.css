@@ -1,0 +1,31 @@
+nav {
+  background-image: url("assets/img/background.png");
+}
+
+.home {
+  background-image: url("assets/img/icon_font_awesome_home.png'");
+}
+
+.title-left {
+  border-left: 1px solid black;
+}
+
+.title-right {
+  border-right: 1px solid black;
+}
+
+.title-bottom {
+  border-bottom: 1px solid black;
+}
+
+.title-left {
+  border-left: 1px solid black;
+}
+
+.title {
+  border-bottom: 1px solid red;
+}
+
+.title .border-left {
+  border-bottom: 1px solid black;
+}/*# sourceMappingURL=011_변수_연습문제.css.map */

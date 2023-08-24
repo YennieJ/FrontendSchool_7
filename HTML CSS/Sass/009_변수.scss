@@ -1,0 +1,11 @@
+$yen1: #000;
+$yen2: #fff;
+// 한글 변수는 권장하지 않음.
+
+.one {
+  color: $yen1;
+}
+
+.two {
+  color: $yen2;
+}

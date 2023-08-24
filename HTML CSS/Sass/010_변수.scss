@@ -1,0 +1,71 @@
+$img-path: "./assets/img";
+$img-name: "background.png";
+$icon-name: "icon_font_awesome";
+
+.test {
+  background: url($img-path + $img-name);
+}
+
+.test2 {
+  background: url($img-path + $img-name + "1.png");
+}
+
+//color
+$red: #ee4444;
+$black: #222;
+$bg-color: #3e5e9e;
+$link-color: red;
+$p-color: #282a36;
+
+// font-size
+$font-p: 13px;
+$font-h1: 28px;
+
+// font
+$base-font: "Noto Sans KR", sans-serif;
+
+// lists
+$sizes: 40px, 50px, 80px;
+$valid-sides: top, right, bottom, left;
+
+// maps
+$font-sizes: (
+  "h1": 45px,
+  "h2": 19px,
+  "p": 16px,
+);
+
+$font-color: (
+  "one": #fff,
+  "two": #ff0,
+  "three": #f00,
+);
+
+// 1. lists
+// do not start 0
+.title_list1 {
+  font-size: nth($sizes, 1);
+}
+
+.title_list2 {
+  font-size: nth($sizes, -1);
+} // nth($sizes, 3);
+
+// 이 문법은 자주 사용하지 않습니다.
+.title_list3 {
+  font-size: nth($list: $sizes, $n: 2);
+}
+
+// 2. maps
+.title_map1 {
+  font-size: map-get($font-sizes, "h1");
+}
+
+.title_map2 {
+  color: map-get($font-color, "three");
+} // nth($sizes, 3);
+
+// 이 문법은 자주 사용하지 않습니다.
+.title_map3 {
+  color: map-get($map: $font-color, $key: "two");
+}

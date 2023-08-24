@@ -1,0 +1,10 @@
+@mixin mix($color) {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #{$color}; // 따옴표 없이
+  background-color: $color; // wrong 따옴표와 함께
+}
+
+.three {
+  @include mix("pink");
+}

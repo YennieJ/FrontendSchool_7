@@ -1,0 +1,22 @@
+@mixin flex($align) {
+  height: 200px;
+  margin: 10px;
+  // background-color: blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @if ($align == "center") {
+    justify-content: center;
+  } @else if($align == "space") {
+    justify-content: space-between;
+  }
+}
+
+.one {
+  @include flex("center");
+}
+
+.two {
+  @include flex("space");
+}

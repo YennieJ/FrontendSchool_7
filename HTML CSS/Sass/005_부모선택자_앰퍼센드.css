@@ -1,0 +1,10 @@
+ul {
+  background-color: pink;
+}
+ul li:hover {
+  background: white;
+  cursor: pointer;
+}
+ul li:last-child {
+  border-bottom: 2px solid black;
+}/*# sourceMappingURL=005_부모선택자_앰퍼센드.css.map */
