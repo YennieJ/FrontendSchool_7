@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>필터</title>
+  </head>
+  <body>
+    <ol>
+      <li>has <strong>strong</strong></li>
+      <li class="item">class item</li>
+      <li class="item">class item</li>
+
+      <li><strong>strong</strong> has</li>
+      <li>has !</li>
+      <li>normal</li>
+      <li>normal</li>
+      <li style="display: none">displaynone</li>
+      <li></li>
+    </ol>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+      // (method) JQuery.eq(index: number): JQuery
+      // $("li").eq(3).css("color", "blue");
+      // (method) JQuery.not(selector: string): JQuery (+3 overloads)
+      // $("li").not(":eq(3)").css("text-decoration", "underline");
+
+      // js
+      // document.querySelector("li:nth-child(4)").style.color = "red";
+      // document.querySelectorAll("li").forEach((el, i) => {
+      //   if (i != 3) {
+      //     el.style.color = "green";
+      //   }
+      // });
+
+      // lt(): 지정된 인덱스보다 작은
+      // $("li:lt(3)").css("color", "blue");
+      // gt(): 지정된 숫자보다 큰
+      // $("li:gt(5)").css("color", "red");
+
+      // class가 있는
+      // $("[class]").css("border", "1px solid green");
+
+      // 포함된 단어
+      // jQuery
+      // $('li:contains("!")').css("background-color", "skyblue");
+      // // JS
+      // document.querySelectorAll("li").forEach((el) => {
+      //   // 방법 : includes
+      //   // if (el.textContent.includes('!')) {
+      //   //   el.style.backgroundColor = 'gold'
+      //   // }
+      //   // console.log(el.textContent.indexOf('world'));
+      //   if (el.textContent.indexOf("!") !== -1) {
+      //     el.style.backgroundColor = "gold";
+      //   }
+      // });
+
+      // $("li:empty").css("background-color", "pink");
+
+      document.querySelectorAll("li").forEach((element) => {
+        // console.log("hasChildNodes", element.hasChildNodes());
+
+        if (element.hasChildNodes()) {
+          element.style.color = "green";
+        }
+      });
+
+      $('li:has("strong")').css("background-color", "pink");
+      // $("li:hidden").show();
+    </script>
+  </body>
+</html>
