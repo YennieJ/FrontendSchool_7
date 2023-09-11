@@ -2,6 +2,7 @@
 body {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
 }
 h1,
 h2 {
@@ -33,6 +34,9 @@ li {
   list-style: none;
 }
 
+dl {
+  margin: 0;
+}
 p {
   margin: 0;
 }
@@ -55,8 +59,6 @@ h1 {
 }
 h1 img {
   max-width: 50%;
-  /* 이거 공부해 */
-  /* max-width: calc(100% - 96px * 2); */
 }
 
 /* 메인 */
@@ -66,7 +68,6 @@ h1 img {
   gap: 20px 28px;
 
   width: 748px;
-  max-width: 100%;
 }
 section {
   background-color: #fff;
@@ -79,13 +80,14 @@ section {
 .cola-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* justify-content: center;
-  align-items: center; */
+  justify-content: center;
+  align-items: center;
   gap: 12px;
 
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px;
 }
 .btn-cola {
+  width: 100%;
   border-radius: 10px;
   padding: 11px 12px 9px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
@@ -105,17 +107,17 @@ section {
 
 .cola-name {
   font-size: 9px;
-  margin-bottom: 7px;
+  margin: 6px 0;
 }
 
 .cola-price {
-  padding: 5px 16px;
-  border-radius: 50px;
+  padding: 5px 0;
+  border-radius: 30px;
   color: #fff;
   font-size: 12px;
   background: #6327fe;
 }
-/* 이거 질문!!!!!!!! */
+
 .btn-cola:disabled {
   position: relative;
 
@@ -145,13 +147,13 @@ section {
   left: 50%;
   transform: translate(-50%, -50%) rotate(-17.965deg);
 
-  z-index: 10px;
+  z-index: 10;
 }
 @media (min-width: 748px) {
   .main {
     grid-template-areas:
-      "menu sale"
-      "menu mine";
+      "menu mine"
+      "menu sale";
     grid-template-columns: repeat(2, 1fr);
     margin: 67px auto;
   }
@@ -160,23 +162,126 @@ section {
   .main {
     grid-template-areas:
       "menu"
-      "sale"
-      "mine";
+      "mine"
+      "sale";
+    max-width: 360px;
+    /* min-width: 100%; */
     grid-template-columns: 100%;
     margin: 18px auto;
+    gap: 0;
+  }
+  #input-number::placeholder {
+    text-align: right;
+    padding-right: 10px;
   }
 }
-
-.sale {
-}
-
-.bg-box {
-}
-
 .sale {
   grid-area: sale;
 }
 
+.money-grid {
+  display: grid;
+  grid-template-columns: 2fr 94px;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.money-area {
+  background-color: #eae8fe;
+  padding: 6px 10px 7px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+#input-number {
+  border-radius: 5px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 0 8px 6px;
+  border: 1px solid #bdbdbd;
+}
+#input-number::placeholder {
+  color: #bdbdbd;
+}
+
+.get-box {
+  height: 106px;
+}
+
+.get-list {
+  padding: 12px 18px 0 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  background: #eae8fe;
+  font-size: 9px;
+}
+
+.get-list li ~ li {
+  margin-top: 6px;
+}
+
+.get-item {
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+  background-color: #fff;
+  padding: 6px 8px 7px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.get-item img {
+  width: 18px;
+  margin-right: 10px;
+}
+
+.get-item strong {
+  background: #fff;
+  padding: 4px 11px 6px;
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+
+  font-size: 14px;
+  margin-left: auto;
+}
+
+.btn-money-area {
+  border-radius: 5px;
+
+  font-size: 13px;
+
+  background-color: white;
+
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.btn-get {
+  color: white;
+  background: #6327fe;
+  font-weight: 700;
+}
+
 .mine {
   grid-area: mine;
+  padding: 9px 27px;
+}
+.mine .money-area dd {
+  font-weight: 700;
+}
+.get {
+  padding: 24px 27px;
+}
+.get div {
+  text-align: center;
+  margin-bottom: 13px;
+  font-weight: 700;
+}
+.get p {
+  font-size: 12px;
+  text-align: right;
+}
+.get-list.total {
+  height: 364px;
+  margin-bottom: 6px;
 }
