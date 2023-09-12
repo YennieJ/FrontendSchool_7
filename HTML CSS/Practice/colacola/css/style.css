@@ -34,8 +34,12 @@ li {
   list-style: none;
 }
 
-dl {
+dl,
+dd {
   margin: 0;
+}
+dd {
+  display: inline-block;
 }
 p {
   margin: 0;
@@ -48,8 +52,14 @@ button {
   padding: 0;
 }
 
-/* CSS */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* CSS */
 body {
   background-color: #eae8fe;
 }
@@ -149,35 +159,6 @@ section {
 
   z-index: 10;
 }
-@media (min-width: 748px) {
-  .main {
-    grid-template-areas:
-      "menu mine"
-      "menu sale";
-    grid-template-columns: repeat(2, 1fr);
-    margin: 67px auto;
-  }
-}
-@media (max-width: 768px) {
-  .main {
-    grid-template-areas:
-      "menu"
-      "mine"
-      "sale";
-    max-width: 360px;
-    /* min-width: 100%; */
-    grid-template-columns: 100%;
-    margin: 18px auto;
-    gap: 0;
-  }
-  #input-number::placeholder {
-    text-align: right;
-    padding-right: 10px;
-  }
-}
-.sale {
-  grid-area: sale;
-}
 
 .money-grid {
   display: grid;
@@ -186,19 +167,20 @@ section {
   margin-bottom: 11px;
 }
 
-.money-area {
+/* .money-area {
+  height: 100%;
   background-color: #eae8fe;
   padding: 6px 10px 7px;
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
-}
+} */
 #input-number {
   border-radius: 5px;
   background: #fff;
   font-size: 13px;
   font-weight: 500;
-  padding: 6px 0 8px 6px;
+  padding: 6px 10px 8px 6px;
   border: 1px solid #bdbdbd;
 }
 #input-number::placeholder {
@@ -266,10 +248,19 @@ section {
   grid-area: mine;
   padding: 9px 27px;
 }
-.mine .money-area dd {
+.money-area {
+  background-color: #eae8fe;
+  padding: 6px 10px 7px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.mine .money-area div {
   font-weight: 700;
 }
+
 .get {
+  grid-area: get;
   padding: 24px 27px;
 }
 .get div {
@@ -284,4 +275,32 @@ section {
 .get-list.total {
   height: 364px;
   margin-bottom: 6px;
+}
+
+@media (min-width: 748px) {
+  .main {
+    grid-template-areas:
+      "menu mine"
+      "menu get";
+
+    grid-template-columns: repeat(2, 1fr);
+    margin: 67px auto;
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    grid-template-areas:
+      "menu"
+      "mine"
+      "get";
+    max-width: 360px;
+    /* min-width: 100%; */
+    grid-template-columns: 100%;
+    margin: 18px auto;
+    gap: 0;
+  }
+
+  #input-number {
+    text-align: right;
+  }
 }
