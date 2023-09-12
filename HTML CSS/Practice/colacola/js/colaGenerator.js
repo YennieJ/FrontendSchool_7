@@ -3,14 +3,21 @@ class ColaGenerator {
     this.itemList = document.querySelector(".cola-list");
   }
 
+  // 동작 기능
   async setup() {
     const colaList = await this.loadItem();
     this.colaFactory(colaList);
   }
 
+  // 데이터 받아오기
   async loadItem() {
+    // loadItem() {
+    //   return fetch("./001.json")
+    //     .then((respnse) => respnse.json())
+    //     .then((data) => data.colaList);
+    // }
     try {
-      const response = await fetch("./001.json");
+      const response = await fetch("./colaItems.json");
       if (!response.ok) {
         throw new Error(`HTTP ERROR : ${response.status}`);
       }
@@ -20,6 +27,7 @@ class ColaGenerator {
     }
   }
 
+  // 아이템 정의하기
   colaFactory(colaList) {
     const docFrag = new DocumentFragment();
     colaList.forEach((el) => {
@@ -36,15 +44,9 @@ class ColaGenerator {
     });
     this.itemList.append(docFrag);
   }
-
-  // loadItem() {
-  //   return fetch("./001.json")
-  //     .then((respnse) => respnse.json())
-  //     .then((data) => data.colaList);
-  // }
 }
 
-const temp = new ColaGenerator();
+// const temp = new ColaGenerator();
 // temp.loadItem().then((data) => console.log(data));
 
-temp.setup();
+export default ColaGenerator;
