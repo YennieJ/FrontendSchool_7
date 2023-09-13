@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>위니브 샵</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const Item = ({ item }) => {
+        return (
+          <li className="product-item">
+            <img
+              className="product-img "
+              src={`http://test.api.weniv.co.kr/${item.thumbnailImg}`}
+              alt={`${item.productName} 대표이미지`}
+            />
+            <div className="product-name">{item.productName}</div>
+            <div>{item.price}</div>
+          </li>
+        );
+      };
+
+      const Product = ({ api }) => {
+        return (
+          <main className="product">
+            <ul className="product-list">
+              {api.map((item) => (
+                <Item item={item} key={item.id} />
+              ))}
+            </ul>
+          </main>
+        );
+      };
+
+      const Body = () => {
+        const [api, setApi] = React.useState(null);
+
+        React.useEffect(() => {
+          dataFetch();
+        }, []);
+        async function dataFetch() {
+          try {
+            const response = await fetch("http://test.api.weniv.co.kr/mall");
+            if (!response.ok) {
+              throw new Error(`HTTP ERROR! ${response.status}`);
+            }
+            const data = await response.json();
+
+            setApi(data);
+          } catch (error) {
+            console.log(error);
+          }
+        }
+
+        return (
+          <div>
+            <h1 className="ir">위니브 샵</h1>
+            {api ? <Product api={api} /> : <div>loading</div>}
+          </div>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      // root.render(Body);
+      root.render(<Body />);
+    </script>
+  </body>
+</html>
