@@ -33,7 +33,8 @@ class ColaGenerator {
     colaList.forEach((el) => {
       const item = document.createElement("li");
       const itemTemplate = `
-      <button type="button" class="btn-cola">
+      <button type="button" class="btn-cola"
+      data-name="${el.name}" data-count="${el.count}" data-price="${el.cost}" data-img="${el.img}">
       <img src="./imgs/${el.img}" alt=${el.name} />
       <span class="cola-name">${el.name}</span>
       <strong class="cola-price">${el.cost}원</strong>

@@ -167,14 +167,6 @@ section {
   margin-bottom: 11px;
 }
 
-/* .money-area {
-  height: 100%;
-  background-color: #eae8fe;
-  padding: 6px 10px 7px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-} */
 #input-number {
   border-radius: 5px;
   background: #fff;
@@ -198,6 +190,25 @@ section {
 
   background: #eae8fe;
   font-size: 9px;
+
+  overflow: auto;
+}
+
+/* 스크롤바 */
+.get-list::-webkit-scrollbar {
+  width: 12px;
+}
+
+.get-list::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 50px;
+  height: 90px;
+  border: solid #eae8fe;
+  border-width: 9px 4px 9px;
+}
+
+.get-list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .get-list li ~ li {
