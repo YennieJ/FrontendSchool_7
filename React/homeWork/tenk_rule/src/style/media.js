@@ -6,12 +6,12 @@ const device = {
 };
 
 const media = {
-  xs: (...args) => css`
+  mobile: (...args) => css`
     @media (max-width: ${device.xs}) {
       ${css(...args)};
     }
   `,
-  sm: (...args) => css`
+  md: (...args) => css`
     @media (max-width: ${device.sm}) {
       ${css(...args)};
     }

@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
-import { title, clock } from "style/imges";
+import { title, clock } from "style/images";
 
-import media from "style/midea";
+import media from "style/media";
 
 export const Header = styled.header`
   background: url(${clock}) no-repeat center/contain;
@@ -13,7 +13,7 @@ export const Header = styled.header`
 
   margin-bottom: 46px;
 
-  ${media.xs`
+  ${media.mobile`
     height: 126px;
     margin-bottom: 31px;
 
@@ -26,10 +26,10 @@ export const TitleImg = styled.img.attrs(() => ({
 }))`
   width: 564px;
 
-  ${media.sm`
+  ${media.md`
     width: 404px;
   `}
-  ${media.xs`
+  ${media.mobile`
     width: 267px;
   `}
 `;
