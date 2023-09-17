@@ -80,14 +80,20 @@ const GlobalStyle = createGlobalStyle`
         }
 
     body{
-      font-family: var( --font-light);
+      font-family: var( --font-GMidium);
       background : var( --color-main);
       color : var(--color-white);
       font-size : 24px;
     }
     button{
-        border : none;
-        cursor : pointer;
+      border : none;
+      cursor : pointer;
+      font:inherit;
+    }
+
+    input{
+      border:none;
+      font:inherit;
     }
 
     * {

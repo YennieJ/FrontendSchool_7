@@ -16,7 +16,6 @@ export const Header = styled.header`
   ${media.mobile`
     height: 126px;
     margin-bottom: 31px;
-
   `}
 `;
 
