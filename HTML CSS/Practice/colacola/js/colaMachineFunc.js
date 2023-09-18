@@ -4,7 +4,6 @@ class ColaMachineFunc {
     const cMachine = document.querySelector(".menu");
 
     this.colaList = cMachine.querySelector(".cola-list");
-    // this.button = cMachine.querySelectorAll(".btn-cola");
 
     this.balance = cMachine.querySelector(".money-area dd");
     this.btnInput = cMachine.querySelector("#input-number+.btn-money-area");
@@ -12,10 +11,16 @@ class ColaMachineFunc {
     this.btnReturn = cMachine.querySelector(".money-area+.btn-money-area");
 
     this.getList = cMachine.querySelector(".get-list");
+    this.getButton = cMachine.querySelector(".btn-get");
 
     // 소지금
     const myInfo = document.querySelector(".mine");
     this.myMoney = myInfo.querySelector(".money-area dd");
+
+    //get
+    const get = document.querySelector(".get");
+    this.totalList = get.querySelector(".get-list");
+    this.totlaPrice = get.querySelector("dd");
   }
 
   setup() {
@@ -28,11 +33,12 @@ class ColaMachineFunc {
 
     getItem.dataset.name = targetCola.dataset.name;
     getItem.dataset.img = targetCola.dataset.img;
+    getItem.dataset.price = targetCola.dataset.price;
 
-    const getItemTemplate = `<img src="./imgs/${targetCola.dataset.img}" alt="" /> ${targetCola.dataset.name}
+    const getItemTemplate = `<img src="./imgs/${getItem.dataset.img}" alt="" /> ${getItem.dataset.name}
     <strong>
       1
-      <!-- <span class="">개</span> -->
+      <span class="hidden">개</span> 
     </strong>`;
 
     getItem.innerHTML = getItemTemplate;
@@ -41,11 +47,31 @@ class ColaMachineFunc {
   }
 
   bindEvents() {
-    // this.button.forEach((button) =>
-    //   button.addEventListener("click", (e) => {
-    //     const colaName = e.currentTarget.children[1].innerHTML;
-    //   })
-    // );
+    // get cola
+    this.getButton.addEventListener("click", () => {
+      const storageItems = this.getList.querySelectorAll("li");
+
+      if (storageItems.length === 0) {
+        alert("물건을 선택해 주세요");
+      } else {
+        storageItems.forEach((items) => {
+          let checkPrice = 0;
+
+          const prePrice = parseInt(this.totlaPrice.innerHTML.replace(",", ""));
+          const price = parseInt(items.dataset.price);
+          const count = parseInt(items.querySelector("strong").innerText[0]);
+
+          this.totlaPrice.innerHTML = (
+            prePrice + (checkPrice += price * count)
+          ).toLocaleString();
+
+          this.totalList.appendChild(items);
+        });
+
+        const selcetedCola = this.colaList.querySelectorAll(".on");
+        selcetedCola.forEach((cola) => cola.classList.remove("on"));
+      }
+    });
 
     // pick cola
     const colaBtns = this.colaList.querySelectorAll("button");
@@ -98,7 +124,7 @@ class ColaMachineFunc {
       });
     });
 
-    // click input button
+    // click money input button
     this.btnInput.addEventListener("click", () => {
       //  입금액
       const inputCostVal = parseInt(this.inputCost.value);

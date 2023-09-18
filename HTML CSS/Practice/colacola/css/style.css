@@ -2,7 +2,6 @@
 body {
   margin: 0;
   font-family: "Noto Sans KR", sans-serif;
-  box-sizing: border-box;
 }
 h1,
 h2 {
@@ -71,6 +70,22 @@ h1 img {
   max-width: 50%;
 }
 
+.hidden {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0); /* IE 6,7 */
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* 메인 */
 .main {
   display: grid;
@@ -79,9 +94,12 @@ h1 img {
 
   width: 748px;
 }
+
 section {
   background-color: #fff;
 }
+
+/* 메뉴 (콜라 리스트, 장바구니) */
 .menu {
   grid-area: menu;
   padding: 30px 27px;
@@ -96,10 +114,13 @@ section {
 
   margin-bottom: 20px;
 }
+/* cola-list 버튼 */
 .btn-cola {
   width: 100%;
-  border-radius: 10px;
   padding: 11px 12px 9px;
+
+  border-radius: 10px;
+
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
 }
 .btn-cola img,
@@ -114,20 +135,22 @@ section {
 .btn-cola.on {
   box-shadow: 0 0 0 4px #6327fe;
 }
-
 .cola-name {
-  font-size: 9px;
   margin: 6px 0;
-}
 
+  font-size: 9px;
+}
 .cola-price {
   padding: 5px 0;
   border-radius: 30px;
+
   color: #fff;
   font-size: 12px;
+
   background: #6327fe;
 }
 
+/* 콜라 품절 */
 .btn-cola:disabled {
   position: relative;
 
@@ -137,10 +160,13 @@ section {
 }
 .btn-cola:disabled::after {
   content: "";
+
   display: block;
   width: 100%;
   height: 100%;
+
   background-color: rgba(0, 0, 0, 0.8);
+
   position: absolute;
   top: 0;
   left: 0;
@@ -160,85 +186,40 @@ section {
   z-index: 10;
 }
 
+/* 인풋 + 버튼 그리드 */
 .money-grid {
   display: grid;
   grid-template-columns: 2fr 94px;
   gap: 12px;
+
   margin-bottom: 11px;
 }
-
 #input-number {
+  padding: 6px 10px 8px 6px;
+
+  border: 1px solid #bdbdbd;
   border-radius: 5px;
-  background: #fff;
+
   font-size: 13px;
   font-weight: 500;
-  padding: 6px 10px 8px 6px;
-  border: 1px solid #bdbdbd;
+
+  background: #fff;
 }
 #input-number::placeholder {
   color: #bdbdbd;
 }
-
-.get-box {
-  height: 106px;
-}
-
-.get-list {
-  padding: 12px 18px 0 12px;
-  border: 1px solid #bdbdbd;
-  border-radius: 5px;
-
-  background: #eae8fe;
-  font-size: 9px;
-
-  overflow: auto;
-}
-
-/* 스크롤바 */
-.get-list::-webkit-scrollbar {
-  width: 12px;
-}
-
-.get-list::-webkit-scrollbar-thumb {
-  background-color: #fff;
-  border-radius: 50px;
-  height: 90px;
-  border: solid #eae8fe;
-  border-width: 9px 4px 9px;
-}
-
-.get-list::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.get-list li ~ li {
-  margin-top: 6px;
-}
-
-.get-item {
-  border-radius: 5px;
-  border: 1px solid #bdbdbd;
-  background-color: #fff;
-  padding: 6px 8px 7px 10px;
+.money-area {
   display: flex;
-  align-items: center;
-}
+  justify-content: space-between;
 
-.get-item img {
-  width: 18px;
-  margin-right: 10px;
-}
+  width: 100%;
 
-.get-item strong {
-  background: #fff;
-  padding: 4px 11px 6px;
+  padding: 6px 10px 7px;
+
   border-radius: 5px;
-  border: 1px solid #bdbdbd;
 
-  font-size: 14px;
-  margin-left: auto;
+  background-color: #eae8fe;
 }
-
 .btn-money-area {
   border-radius: 5px;
 
@@ -249,43 +230,113 @@ section {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
-.btn-get {
-  color: white;
-  background: #6327fe;
-  font-weight: 700;
+/* 장바구니 */
+.get-box {
+  height: 106px;
+}
+.get-list {
+  padding: 12px 6px 0 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  font-size: 9px;
+
+  background: #eae8fe;
+
+  overflow-y: scroll;
 }
 
+/* 스크롤바 */
+.get-list::-webkit-scrollbar {
+  width: 12px;
+}
+.get-list::-webkit-scrollbar-thumb {
+  height: 90px;
+
+  border: solid #eae8fe;
+  border-width: 9px 4px 9px;
+  border-radius: 50px;
+
+  background-color: #fff;
+}
+.get-list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* 장바구니 아이템 */
+.get-list li ~ li {
+  margin-top: 6px;
+}
+.get-item {
+  display: flex;
+  align-items: center;
+
+  padding: 6px 8px 7px 10px;
+
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  background-color: #fff;
+}
+.get-item img {
+  width: 18px;
+
+  margin-right: 10px;
+}
+.get-item strong {
+  padding: 4px 11px 6px;
+  margin-left: auto;
+
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  font-size: 14px;
+
+  background: #fff;
+}
+/* 획득 버튼 */
+.btn-get {
+  color: white;
+  font-weight: 700;
+
+  background: #6327fe;
+}
+
+/* 소지금 */
 .mine {
   grid-area: mine;
-  padding: 9px 27px;
-}
-.money-area {
-  background-color: #eae8fe;
-  padding: 6px 10px 7px;
+
   display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
+  align-items: center;
+
+  padding: 9px 27px;
 }
 .mine .money-area div {
   font-weight: 700;
 }
 
+/* 획득한 음료 */
 .get {
   grid-area: get;
+
   padding: 24px 27px;
 }
-.get div {
-  text-align: center;
+.get h2 {
   margin-bottom: 13px;
+
   font-weight: 700;
-}
-.get p {
-  font-size: 12px;
-  text-align: right;
+  text-align: center;
 }
 .get-list.total {
   height: 364px;
   margin-bottom: 6px;
+}
+.get .totalPrice {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+
+  font-size: 12px;
 }
 
 @media (min-width: 748px) {
@@ -305,7 +356,6 @@ section {
       "mine"
       "get";
     max-width: 360px;
-    /* min-width: 100%; */
     grid-template-columns: 100%;
     margin: 18px auto;
     gap: 0;
