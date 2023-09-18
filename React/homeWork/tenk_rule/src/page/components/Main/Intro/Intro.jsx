@@ -5,6 +5,7 @@ import * as S from "./Intro.styled";
 const Intro = () => {
   return (
     <S.IntroContainer>
+      <h2 className="hidden">1만 시간의 법칙 설명</h2>
       <S.IntroSaying>
         “연습은 어제의 당신보다 당신을 더 낫게 만든다.”
       </S.IntroSaying>

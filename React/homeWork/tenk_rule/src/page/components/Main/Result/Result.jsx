@@ -8,9 +8,9 @@ import * as S from "./Result.styled";
 
 const Result = ({ resultVal }) => {
   const [start, setStart] = useState(false);
-
   const [modal, setModal] = useState(false);
 
+  // loadgin spinner을 위한,
   useEffect(() => {
     setStart(true);
     setTimeout(() => {
@@ -30,6 +30,7 @@ const Result = ({ resultVal }) => {
 
   return (
     <S.ResultContainer>
+      <h2 className="hidden">결과</h2>
       {start ? (
         <LoadingBox />
       ) : (

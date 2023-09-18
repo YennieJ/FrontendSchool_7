@@ -11,6 +11,7 @@ const Question = ({ fieldRef, timeRef, onSubmit }) => {
 
   return (
     <S.InputContainer>
+      <h2 className="hidden">{submitText}</h2>
       <form>
         <S.Field>
           <p>나는</p>
