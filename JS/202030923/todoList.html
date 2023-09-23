@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //  Todo List
+      //    1. 일의 내용, 일의 상태 (계획,done). 2가지 프로퍼티
+      //    2. 일의 상태를 변경하는 매서드
+
+      class Todo {
+        constructor(item, finished) {
+          this.item = item;
+          this.finished = finished;
+        }
+
+        changeStatus() {
+          this.finished = !this.finished;
+        }
+      }
+
+      //  Todo Manager
+      //    1. 일의 리스트 프로퍼티 (배열)
+      //    2. 할일을 저장하는 메서드, 할일의 목록을 보여주는 메서드, 할일의 남은 갯수를 보여주는 메서드(상태 체크)
+
+      class TodoManager {
+        constructor() {
+          this.todoList = [];
+        }
+
+        addItem(item, finished = false) {
+          const todo = new Todo(item, finished);
+          this.todoList.push(todo);
+        }
+
+        getItems() {
+          return this.todoList;
+        }
+
+        getLeftTodoCount() {
+          return this.todoList.filter((item) => item.finished === false).length;
+        }
+      }
+
+      const manager = new TodoManager();
+    </script>
+  </body>
+</html>
