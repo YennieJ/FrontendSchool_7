@@ -51,14 +51,14 @@
 
       // 보여지는 화면을 선택하는 함수
       function TOC() {
-        // 3. 시용할 곳에서 state 가져오기 (reder)
+        // 3. 시용할 곳에서 state 가져오기
         const state = store.getState();
 
         // 3-1. 가공
         const items = state.contents
           .map(
             (item) =>
-              // 4. state를 변경하기 위한 dispatch 설정 ==> reducer 함수 호출
+              // 4. state를 변경하기 위한 dispatch 설정 (action)
               `<li>
                 <a onclick="event.preventDefault();
 
@@ -135,7 +135,7 @@
         };
 
         // 6. mode에 따라 변경 되는 화면 설정
-        // dispatch => reducer호출 => action 실행
+        // dispatch(action) 실행 => reducer
         if (state.mode === "create") {
           document.querySelector("#content").innerHTML = `
           <article >
@@ -182,7 +182,9 @@
 
       // 2. reducer 설정하기
       // 모든 정의는 이곳에서
+      // action은 dispatch(action)
       function reducer(state, action) {
+        // 기본 state
         if (state === undefined) {
           return {
             max_id: 2,
